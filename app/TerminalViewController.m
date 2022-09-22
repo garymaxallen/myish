@@ -574,8 +574,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++   viewDidLoad");
+    //    self.view.backgroundColor = [UIColor systemPinkColor];
+    //    self.termView = [[TerminalView alloc] initWithFrame:CGRectMake(0.0, 0.0, 400.0, 900.0)];
+    self.termView = [[TerminalView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.termView.backgroundColor = [UIColor systemGreenColor];
+//    UIInputView *inputView = [[UIInputView alloc] initWithFrame:CGRectMake(0.0, 0.0, 310.0, 40.0)];
+//    [inputView setBackgroundColor:[UIColor lightTextColor]];
+//    [self.termView.inputAccessoryView addSubview:inputView];
+    self.barView = [[UIInputView alloc] init];
+    self.bar = [[UIStackView alloc] initWithFrame:CGRectMake(0.0, 0.0, 310.0, 40.0)];
+    self.bar.backgroundColor = [UIColor systemRedColor];
+    [self.barView addSubview:self.bar];
+    [self.termView.inputAccessoryView addSubview:self.barView];
+    
+    self.tabKey = [UIButton buttonWithType: UIButtonTypeSystem];
+    [self.tabKey setFrame: CGRectMake(42.0, 0.0, 40.0, 40.0)];
+    [self.tabKey setTitle: @"→" forState: UIControlStateNormal];
+    [self.tabKey setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.tabKey setBackgroundColor: [UIColor whiteColor]];
+    [self.tabKey addTarget: self action: @selector(pressTab) forControlEvents: UIControlEventTouchUpInside];
+    [self.bar addSubview:self.tabKey];
+    
+    self.infoButton = [UIButton buttonWithType: UIButtonTypeSystem];
+    [self.infoButton setFrame: CGRectMake(82.0, 0.0, 40.0, 40.0)];
+//    [self.infoButton setTitle: @"⚙️" forState: UIControlStateNormal];
+    [self.infoButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.infoButton setBackgroundColor: [UIColor whiteColor]];
+    [self.infoButton addTarget: self action: @selector(showAbout:) forControlEvents: UIControlEventTouchUpInside];
+    [self.bar addSubview:self.infoButton];
+    
+    self.hideKeyboardButton = [UIButton buttonWithType: UIButtonTypeSystem];
+    [self.hideKeyboardButton setFrame: CGRectMake(122.0, 0.0, 40.0, 40.0)];
+//    [self.hideKeyboardButton setTitle: @"xx" forState: UIControlStateNormal];
+    [self.hideKeyboardButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.hideKeyboardButton setBackgroundColor: [UIColor whiteColor]];
+    [self.hideKeyboardButton addTarget: self action: @selector(hideKeyboard) forControlEvents: UIControlEventTouchUpInside];
+    [self.bar addSubview:self.hideKeyboardButton];
 
+    self.termView.canBecomeFirstResponder = true;
+    
 #if !ISH_LINUX
+    NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++   !ISH_LINUX");
     int bootError = [AppDelegate bootError];
     if (bootError < 0) {
         NSString *message = [NSString stringWithFormat:@"could not boot"];
@@ -586,10 +628,10 @@
         NSLog(@"boot failed with code %d", bootError);
     }
 #endif
-
+    
     self.terminal = self.terminal;
     [self.termView becomeFirstResponder];
-
+    
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
                selector:@selector(keyboardDidSomething:)
@@ -603,8 +645,8 @@
                selector:@selector(_updateBadge)
                    name:FsUpdatedNotification
                  object:nil];
-
-
+    
+    
     [self _updateStyleFromPreferences:NO];
     
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
@@ -643,6 +685,9 @@
         });
     }];
     [self _updateBadge];
+    
+    
+    [self.view addSubview: self.termView];
 }
 
 - (void)awakeFromNib {
@@ -685,7 +730,7 @@
 
 - (int)startSession {
     NSArray<NSString *> *command = UserPreferences.shared.launchCommand;
-
+    
 #if !ISH_LINUX
     int err = become_new_init_child();
     if (err < 0)
@@ -703,7 +748,7 @@
     if (err < 0)
         return err;
     tty_release(tty);
-
+    
     char argv[4096];
     [Terminal convertCommand:command toArgs:argv limitSize:sizeof(argv)];
     const char *envp = "TERM=xterm-256color\0";
@@ -749,7 +794,7 @@
     int pid = [notif.userInfo[@"pid"] intValue];
     if (pid != self.sessionPid)
         return;
-
+    
     [self.sessionTerminal destroy];
     // On iOS 13, there are multiple windows, so just close this one.
     if (@available(iOS 13, *)) {
@@ -840,7 +885,7 @@
 - (void)keyboardDidSomething:(NSNotification *)notification {
     if (self.ignoreKeyboardMotion)
         return;
-
+    
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     keyboardFrame = [self.view convertRect:keyboardFrame fromView:self.view.window];
     if (CGRectEqualToRect(keyboardFrame, CGRectZero))
@@ -862,7 +907,7 @@
     }
     // NSLog(@"pad %f", pad);
     self.bottomConstraint.constant = pad;
-
+    
     BOOL initialLayout = self.termView.needsUpdateConstraints;
     [self.view setNeedsUpdateConstraints];
     if (!initialLayout) {
@@ -873,8 +918,8 @@
                               delay:0
                             options:curve.integerValue << 16
                          animations:^{
-                             [self.view layoutIfNeeded];
-                         }
+            [self.view layoutIfNeeded];
+        }
                          completion:nil];
     }
 }
@@ -948,10 +993,14 @@
     self.barButtonWidth.constant = buttonWidth;
 }
 
+- (void)hideKeyboard{
+    [self.termView resignFirstResponder];
+}
+
 - (void)pressEscape:(id)sender {
     [self pressKey:@"\x1b"];
 }
-- (void)pressTab:(id)sender {
+- (void)pressTab{
     [self pressKey:@"\t"];
 }
 - (void)pressKey:(NSString *)key {
@@ -961,7 +1010,7 @@
 - (void)pressControl:(id)sender {
     self.controlKey.selected = !self.controlKey.selected;
 }
-    
+
 - (void)pressArrow:(ArrowBarButton *)sender {
     switch (sender.direction) {
         case ArrowUp: [self pressKey:[self.terminal arrow:'A']]; break;
