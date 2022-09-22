@@ -580,7 +580,7 @@
     //    self.view.backgroundColor = [UIColor systemPinkColor];
     //    self.termView = [[TerminalView alloc] initWithFrame:CGRectMake(0.0, 0.0, 400.0, 900.0)];
     self.termView = [[TerminalView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.termView.backgroundColor = [UIColor systemGreenColor];
+//    self.termView.backgroundColor = [UIColor systemGreenColor];
 //    UIInputView *inputView = [[UIInputView alloc] initWithFrame:CGRectMake(0.0, 0.0, 310.0, 40.0)];
 //    [inputView setBackgroundColor:[UIColor lightTextColor]];
 //    [self.termView.inputAccessoryView addSubview:inputView];
