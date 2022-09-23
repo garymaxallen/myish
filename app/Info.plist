@@ -60,7 +60,8 @@
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>Terminal</string>
+	<!-- <string>LaunchScreen</string> -->
 	<!-- <key>UIMainStoryboardFile</key> -->
 	<!-- <string>Terminal</string> -->
 	<key>UIRequiredDeviceCapabilities</key>

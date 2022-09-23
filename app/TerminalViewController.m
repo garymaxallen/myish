@@ -585,30 +585,87 @@
 //    [inputView setBackgroundColor:[UIColor lightTextColor]];
 //    [self.termView.inputAccessoryView addSubview:inputView];
     self.barView = [[UIInputView alloc] init];
-    self.bar = [[UIStackView alloc] initWithFrame:CGRectMake(0.0, 0.0, 310.0, 40.0)];
+    self.bar = [[UIStackView alloc] initWithFrame:CGRectMake(0.0, 0.0, UIScreen.mainScreen.bounds.size.width, 40.0)];
     self.bar.backgroundColor = [UIColor systemRedColor];
     [self.barView addSubview:self.bar];
     [self.termView.inputAccessoryView addSubview:self.barView];
     
+    self.escapeKey = [UIButton buttonWithType: UIButtonTypeSystem];
+    [self.escapeKey setFrame: CGRectMake(0.0, 0.0, 40.0, 40.0)];
+    [self.escapeKey setTitle: @"ESC" forState: UIControlStateNormal];
+    [self.escapeKey setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.escapeKey setBackgroundColor: [UIColor whiteColor]];
+    [self.escapeKey addTarget: self action: @selector(pressEscape:) forControlEvents: UIControlEventTouchUpInside];
+    [self.bar addSubview:self.escapeKey];
+    
     self.tabKey = [UIButton buttonWithType: UIButtonTypeSystem];
-    [self.tabKey setFrame: CGRectMake(42.0, 0.0, 40.0, 40.0)];
-    [self.tabKey setTitle: @"→" forState: UIControlStateNormal];
+    [self.tabKey setFrame: CGRectMake(40.0, 0.0, 40.0, 40.0)];
+    [self.tabKey setTitle: @"TAB" forState: UIControlStateNormal];
     [self.tabKey setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.tabKey setBackgroundColor: [UIColor whiteColor]];
     [self.tabKey addTarget: self action: @selector(pressTab) forControlEvents: UIControlEventTouchUpInside];
     [self.bar addSubview:self.tabKey];
     
+    self.controlKey = [UIButton buttonWithType: UIButtonTypeSystem];
+    [self.controlKey setFrame: CGRectMake(80.0, 0.0, 40.0, 40.0)];
+    [self.controlKey setTitle: @"CTRL" forState: UIControlStateNormal];
+    [self.controlKey setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.controlKey setBackgroundColor: [UIColor whiteColor]];
+    [self.controlKey addTarget: self action: @selector(pressControl:) forControlEvents: UIControlEventTouchUpInside];
+    self.termView.controlKey = self.controlKey;
+    [self.bar addSubview:self.controlKey];
+    
+    UIButton *leftButton = [UIButton buttonWithType: UIButtonTypeSystem];
+    [leftButton setFrame: CGRectMake(120.0, 0.0, 40.0, 40.0)];
+    [leftButton setTitle: @"←" forState: UIControlStateNormal];
+    [leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [leftButton setBackgroundColor: [UIColor whiteColor]];
+    [leftButton addTarget: self action: @selector(pressLeft) forControlEvents: UIControlEventTouchUpInside];
+    [self.bar addSubview:leftButton];
+    
+    UIButton *rightButton = [UIButton buttonWithType: UIButtonTypeSystem];
+    [rightButton setFrame: CGRectMake(160.0, 0.0, 40.0, 40.0)];
+    [rightButton setTitle: @"→" forState: UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [rightButton setBackgroundColor: [UIColor whiteColor]];
+    [rightButton addTarget: self action: @selector(pressRight) forControlEvents: UIControlEventTouchUpInside];
+    [self.bar addSubview:rightButton];
+    
+    UIButton *upButton = [UIButton buttonWithType: UIButtonTypeSystem];
+    [upButton setFrame: CGRectMake(200.0, 0.0, 40.0, 40.0)];
+    [upButton setTitle: @"↑" forState: UIControlStateNormal];
+    [upButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [upButton setBackgroundColor: [UIColor whiteColor]];
+    [upButton addTarget: self action: @selector(pressUp) forControlEvents: UIControlEventTouchUpInside];
+    [self.bar addSubview:upButton];
+    
+    UIButton *downButton = [UIButton buttonWithType: UIButtonTypeSystem];
+    [downButton setFrame: CGRectMake(240.0, 0.0, 40.0, 40.0)];
+    [downButton setTitle: @"↓" forState: UIControlStateNormal];
+    [downButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [downButton setBackgroundColor: [UIColor whiteColor]];
+    [downButton addTarget: self action: @selector(pressDown) forControlEvents: UIControlEventTouchUpInside];
+    [self.bar addSubview:downButton];
+    
+    self.pasteButton = [UIButton buttonWithType: UIButtonTypeSystem];
+    [self.pasteButton setFrame: CGRectMake(280.0, 0.0, 40.0, 40.0)];
+    [self.pasteButton setTitle: @"🅿️" forState: UIControlStateNormal];
+    [self.pasteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.pasteButton setBackgroundColor: [UIColor whiteColor]];
+    [self.pasteButton addTarget: self action: @selector(pressPaste) forControlEvents: UIControlEventTouchUpInside];
+    [self.bar addSubview:self.pasteButton];
+    
     self.infoButton = [UIButton buttonWithType: UIButtonTypeSystem];
-    [self.infoButton setFrame: CGRectMake(82.0, 0.0, 40.0, 40.0)];
-//    [self.infoButton setTitle: @"⚙️" forState: UIControlStateNormal];
+    [self.infoButton setFrame: CGRectMake(320.0, 0.0, 40.0, 40.0)];
+    [self.infoButton setTitle: @"⚙️" forState: UIControlStateNormal];
     [self.infoButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.infoButton setBackgroundColor: [UIColor whiteColor]];
     [self.infoButton addTarget: self action: @selector(showAbout:) forControlEvents: UIControlEventTouchUpInside];
     [self.bar addSubview:self.infoButton];
     
     self.hideKeyboardButton = [UIButton buttonWithType: UIButtonTypeSystem];
-    [self.hideKeyboardButton setFrame: CGRectMake(122.0, 0.0, 40.0, 40.0)];
-//    [self.hideKeyboardButton setTitle: @"xx" forState: UIControlStateNormal];
+    [self.hideKeyboardButton setFrame: CGRectMake(360.0, 0.0, 40.0, 40.0)];
+    [self.hideKeyboardButton setTitle: @"⌨️" forState: UIControlStateNormal];
     [self.hideKeyboardButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.hideKeyboardButton setBackgroundColor: [UIColor whiteColor]];
     [self.hideKeyboardButton addTarget: self action: @selector(hideKeyboard) forControlEvents: UIControlEventTouchUpInside];
@@ -660,18 +717,18 @@
     }
     
     // SF Symbols is cool
-    if (@available(iOS 13, *)) {
-        [self.infoButton setImage:[UIImage systemImageNamed:@"gear"] forState:UIControlStateNormal];
-        [self.pasteButton setImage:[UIImage systemImageNamed:@"doc.on.clipboard"] forState:UIControlStateNormal];
-        [self.hideKeyboardButton setImage:[UIImage systemImageNamed:@"keyboard.chevron.compact.down"] forState:UIControlStateNormal];
-        
-        [self.tabKey setTitle:nil forState:UIControlStateNormal];
-        [self.tabKey setImage:[UIImage systemImageNamed:@"arrow.right.to.line.alt"] forState:UIControlStateNormal];
-        [self.controlKey setTitle:nil forState:UIControlStateNormal];
-        [self.controlKey setImage:[UIImage systemImageNamed:@"control"] forState:UIControlStateNormal];
-        [self.escapeKey setTitle:nil forState:UIControlStateNormal];
-        [self.escapeKey setImage:[UIImage systemImageNamed:@"escape"] forState:UIControlStateNormal];
-    }
+//    if (@available(iOS 13, *)) {
+//        [self.infoButton setImage:[UIImage systemImageNamed:@"gear"] forState:UIControlStateNormal];
+//        [self.pasteButton setImage:[UIImage systemImageNamed:@"doc.on.clipboard"] forState:UIControlStateNormal];
+//        [self.hideKeyboardButton setImage:[UIImage systemImageNamed:@"keyboard.chevron.compact.down"] forState:UIControlStateNormal];
+//
+//        [self.tabKey setTitle:nil forState:UIControlStateNormal];
+//        [self.tabKey setImage:[UIImage systemImageNamed:@"arrow.right.to.line.alt"] forState:UIControlStateNormal];
+//        [self.controlKey setTitle:nil forState:UIControlStateNormal];
+//        [self.controlKey setImage:[UIImage systemImageNamed:@"control"] forState:UIControlStateNormal];
+//        [self.escapeKey setTitle:nil forState:UIControlStateNormal];
+//        [self.escapeKey setImage:[UIImage systemImageNamed:@"escape"] forState:UIControlStateNormal];
+//    }
     
     [UserPreferences.shared observe:@[@"hideStatusBar"] options:0 owner:self usingBlock:^(typeof(self) self) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -1010,6 +1067,30 @@
 - (void)pressControl:(id)sender {
     self.controlKey.selected = !self.controlKey.selected;
 }
+
+- (void)pressLeft{
+    [self pressKey:[self.terminal arrow:'D']];
+}
+
+- (void)pressRight{
+    [self pressKey:[self.terminal arrow:'C']];
+}
+
+- (void)pressUp{
+    [self pressKey:[self.terminal arrow:'A']];
+}
+
+- (void)pressDown{
+    [self pressKey:[self.terminal arrow:'B']];
+}
+
+- (void)pressPaste{
+    NSString *string = UIPasteboard.generalPasteboard.string;
+    if (string) {
+        [self.termView insertText:string];
+    }
+}
+
 
 - (void)pressArrow:(ArrowBarButton *)sender {
     switch (sender.direction) {

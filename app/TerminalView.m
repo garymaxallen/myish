@@ -84,6 +84,7 @@ struct rowcol {
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
     self.inputAssistantItem.leadingBarButtonGroups = @[];
     self.inputAssistantItem.trailingBarButtonGroups = @[];
 
