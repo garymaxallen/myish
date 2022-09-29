@@ -203,6 +203,16 @@ static NSString *const HANDLERS[] = {@"syncFocus", @"focus", @"newScrollHeight",
         @"blinkCursor": @(prefs.blinkCursor),
         @"cursorShape": prefs.htermCursorShape,
     } mutableCopy];
+    
+//        NSString *family;
+//        NSString *font;
+//        for (family in UIFont.familyNames) {
+//            NSLog(@"family: %@", family);
+//            for (font in [UIFont fontNamesForFamilyName:family]) {
+//                NSLog(@"font: %@", font);
+//            }
+//        }
+    
     if (prefs.palette.colorPaletteOverrides) {
         themeInfo[@"colorPaletteOverrides"] = palette.colorPaletteOverrides;
     }

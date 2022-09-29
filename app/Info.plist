@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>consola.ttf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -47,8 +51,6 @@
 					<string>Main App</string>
 					<key>UISceneDelegateClassName</key>
 					<string>SceneDelegate</string>
-					<!-- <key>UISceneStoryboardFile</key> -->
-					<!-- <string>Terminal</string> -->
 				</dict>
 			</array>
 		</dict>
@@ -61,9 +63,6 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>Terminal</string>
-	<!-- <string>LaunchScreen</string> -->
-	<!-- <key>UIMainStoryboardFile</key> -->
-	<!-- <string>Terminal</string> -->
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
