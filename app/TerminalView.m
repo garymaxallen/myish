@@ -7,9 +7,7 @@
 
 #import "ScrollbarView.h"
 #import "TerminalView.h"
-#import "UserPreferences.h"
-#import "UIApplication+OpenURL.h"
-#import "NSObject+SaneKVO.h"
+//#import "UIApplication+OpenURL.h"
 
 struct rowcol {
     int row;
@@ -145,35 +143,20 @@ static NSString *const HANDLERS[] = {@"syncFocus", @"focus", @"newScrollHeight",
     NSAssert(NSThread.isMainThread, @"This method needs to be called on the main thread");
     if (!self.terminal.loaded)
         return;
-    UserPreferences *prefs = [UserPreferences shared];
-    if (_overrideFontSize == prefs.fontSize.doubleValue)
-        _overrideFontSize = 0;
-    Palette *palette = prefs.palette;
-    if (self.overrideAppearance != OverrideAppearanceNone) {
-        palette = self.overrideAppearance == OverrideAppearanceLight ? prefs.theme.lightPalette : prefs.theme.darkPalette;
-    }
+    
     NSMutableDictionary<NSString *, id> *themeInfo = [@{
-        @"fontFamily": prefs.fontFamily,
-        @"fontSize": @(self.effectiveFontSize),
-        @"foregroundColor": palette.foregroundColor,
-        @"backgroundColor": palette.backgroundColor,
-        @"blinkCursor": @(prefs.blinkCursor),
-        @"cursorShape": prefs.htermCursorShape,
+        @"fontFamily": @"ui-monospace",
+        @"fontSize": @(16),
+        @"foregroundColor": @"#fff",
+        @"backgroundColor": @"#000",
+        @"blinkCursor": @(1),
+        @"cursorShape": @"BLOCK",
     } mutableCopy];
 
-    if (prefs.palette.colorPaletteOverrides) {
-        themeInfo[@"colorPaletteOverrides"] = palette.colorPaletteOverrides;
-    }
     NSString *json = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:themeInfo options:0 error:nil] encoding:NSUTF8StringEncoding];
     [self.terminal.webView evaluateJavaScript:[NSString stringWithFormat:@"exports.updateStyle(%@)", json] completionHandler:^(id result, NSError *error){
         [self updateFloatingCursorSensitivity];
     }];
-}
-
-- (CGFloat)effectiveFontSize {
-    if (self.overrideFontSize != 0)
-        return self.overrideFontSize;
-    return UserPreferences.shared.fontSize.doubleValue;
 }
 
 #pragma mark Focus and scrolling
@@ -237,7 +220,8 @@ static NSString *const HANDLERS[] = {@"syncFocus", @"focus", @"newScrollHeight",
             return;
         [self.scrollbarView setContentOffset:CGPointMake(0, newOffset) animated:NO];
     } else if ([message.name isEqualToString:@"openLink"]) {
-        [UIApplication openURL:message.body];
+//        [UIApplication openURL:message.body];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:message.body] options:@{} completionHandler:nil];
     }
 }
 
@@ -281,6 +265,8 @@ static NSString *const HANDLERS[] = {@"syncFocus", @"focus", @"newScrollHeight",
     NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
     [self.terminal sendInput:data];
 }
+
+static const char *controlKeys = "abcdefghijklmnopqrstuvwxyz@^26-=[]\\ ";
 
 - (void)insertControlChar:(char)ch {
     if (strchr(controlKeys, ch) != NULL) {
@@ -420,133 +406,6 @@ static NSString *const HANDLERS[] = {@"syncFocus", @"focus", @"newScrollHeight",
 // Apparently required on iOS 15+: https://stackoverflow.com/a/72359764
 - (UITextSpellCheckingType)spellCheckingType {
     return UITextSpellCheckingTypeNo;
-}
-
-#pragma mark Hardware Keyboard
-
-- (void)handleKeyCommand:(UIKeyCommand *)command {
-    NSString *key = command.input;
-    if (command.modifierFlags == 0) {
-        if ([key isEqualToString:@"`"] && UserPreferences.shared.backtickMapEscape)
-            key = UIKeyInputEscape;
-        if ([key isEqualToString:UIKeyInputEscape])
-            key = @"\x1b";
-        else if ([key isEqualToString:UIKeyInputUpArrow])
-            key = [self.terminal arrow:'A'];
-        else if ([key isEqualToString:UIKeyInputDownArrow])
-            key = [self.terminal arrow:'B'];
-        else if ([key isEqualToString:UIKeyInputLeftArrow])
-            key = [self.terminal arrow:'D'];
-        else if ([key isEqualToString:UIKeyInputRightArrow])
-            key = [self.terminal arrow:'C'];
-        [self insertText:key];
-    } else if (command.modifierFlags & UIKeyModifierShift) {
-        [self insertText:[key uppercaseString]];
-    } else if (command.modifierFlags & UIKeyModifierAlternate) {
-        [self insertText:[@"\x1b" stringByAppendingString:key]];
-    } else if (command.modifierFlags & UIKeyModifierAlphaShift) {
-        [self handleCapsLockWithCommand:command];
-    } else if (command.modifierFlags & UIKeyModifierControl || command.modifierFlags & UIKeyModifierAlphaShift) {
-        if (key.length == 0)
-            return;
-        if ([key isEqualToString:@"2"])
-            key = @"@";
-        else if ([key isEqualToString:@"6"])
-            key = @"^";
-        else if ([key isEqualToString:@"-"])
-            key = @"_";
-        [self insertControlChar:[key characterAtIndex:0]];
-    }
-}
-
-static const char *alphabet = "abcdefghijklmnopqrstuvwxyz";
-static const char *controlKeys = "abcdefghijklmnopqrstuvwxyz@^26-=[]\\ ";
-static const char *metaKeys = "abcdefghijklmnopqrstuvwxyz0123456789-=[]\\;',./";
-
-- (NSArray<UIKeyCommand *> *)keyCommands {
-    if (_keyCommands != nil)
-        return _keyCommands;
-    _keyCommands = [NSMutableArray new];
-    [self addKeys:controlKeys withModifiers:UIKeyModifierControl];
-    for (NSString *specialKey in @[UIKeyInputEscape, UIKeyInputUpArrow, UIKeyInputDownArrow,
-                                   UIKeyInputLeftArrow, UIKeyInputRightArrow, @"\t"]) {
-        [self addKey:specialKey withModifiers:0];
-    }
-    if (UserPreferences.shared.capsLockMapping != CapsLockMapNone) {
-        if (@available(iOS 13, *)); else {
-            [self addKeys:controlKeys withModifiers:UIKeyModifierAlphaShift];
-            [self addKeys:alphabet withModifiers:0];
-            [self addKeys:alphabet withModifiers:UIKeyModifierShift];
-            [self addKey:@"" withModifiers:UIKeyModifierAlphaShift]; // otherwise tap of caps lock can switch layouts
-        }
-    }
-    if (UserPreferences.shared.optionMapping == OptionMapEsc) {
-        [self addKeys:metaKeys withModifiers:UIKeyModifierAlternate];
-    }
-    if (UserPreferences.shared.backtickMapEscape) {
-        [self addKey:@"`" withModifiers:0];
-    }
-    [_keyCommands addObject:[UIKeyCommand keyCommandWithInput:@"k"
-                                                modifierFlags:UIKeyModifierCommand|UIKeyModifierShift
-                                                       action:@selector(clearScrollback:)
-                                         discoverabilityTitle:@"Clear Scrollback"]];
-    return _keyCommands;
-}
-
-- (void)addKeys:(const char *)keys withModifiers:(UIKeyModifierFlags)modifiers {
-    for (size_t i = 0; keys[i] != '\0'; i++) {
-        [self addKey:[NSString stringWithFormat:@"%c", keys[i]] withModifiers:modifiers];
-    }
-}
-
-- (void)addKey:(NSString *)key withModifiers:(UIKeyModifierFlags)modifiers {
-    UIKeyCommand *command = [UIKeyCommand keyCommandWithInput:key
-                                                modifierFlags:modifiers
-                                                       action:@selector(handleKeyCommand:)];
-    if (@available(iOS 15, *)) {
-        command.wantsPriorityOverSystemBehavior = YES;
-    }
-    [_keyCommands addObject:command];
-}
-
-- (void)keyCommandTriggered:(UIKeyCommand *)sender {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self handleKeyCommand:sender];
-    });
-}
-
-- (void)handleCapsLockWithCommand:(UIKeyCommand *)command {
-    CapsLockMapping target = UserPreferences.shared.capsLockMapping;
-    NSString *newInput = command.input ? command.input : @"";
-    UIKeyModifierFlags flags = command.modifierFlags;
-    flags ^= UIKeyModifierAlphaShift;
-    if(target == CapsLockMapEscape) {
-        newInput = UIKeyInputEscape;
-    } else if(target == CapsLockMapControl) {
-        if([newInput length] == 0) {
-            return;
-        }
-        flags |= UIKeyModifierControl;
-    } else {
-        return;
-    }
-
-    UIKeyCommand *newCommand = [UIKeyCommand keyCommandWithInput:newInput
-                                                   modifierFlags:flags
-                                                          action:@selector(keyCommandTriggered:)];
-    [self handleKeyCommand:newCommand];
-}
-
-- (void)pressesBegan:(NSSet<UIPress *> *)presses withEvent:(UIPressesEvent *)event {
-    if (@available(iOS 13.4, *)) {
-        UIKey *key = presses.anyObject.key;
-        if (UserPreferences.shared.overrideControlSpace &&
-            key.keyCode == UIKeyboardHIDUsageKeyboardSpacebar &&
-            key.modifierFlags & UIKeyModifierControl) {
-            return [self insertControlChar:' '];
-        }
-    }
-    return [super pressesBegan:presses withEvent:event];
 }
 
 #pragma mark UITextInput stubs

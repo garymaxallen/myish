@@ -9,28 +9,21 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import "AboutViewController.h"
 #import "AppDelegate.h"
-#import "AppGroup.h"
 #import "CurrentRoot.h"
 #import "iOSFS.h"
 #import "SceneDelegate.h"
 #import "PasteboardDevice.h"
 #import "LocationDevice.h"
-#import "NSObject+SaneKVO.h"
-#import "Roots.h"
-#import "TerminalViewController.h"
-#import "UserPreferences.h"
-#import "UIApplication+OpenURL.h"
 #include "kernel/init.h"
 #include "kernel/calls.h"
 #include "fs/dyndev.h"
 #include "fs/devices.h"
 #include "fs/path.h"
 
-#if ISH_LINUX
-#import "LinuxInterop.h"
-#endif
+//#if ISH_LINUX
+//#import "LinuxInterop.h"
+//#endif
 
 @interface AppDelegate ()
 
@@ -73,11 +66,29 @@ void ReportPanic(const char *message) {
 static int bootError;
 static NSString *const kSkipStartupMessage = @"Skip Startup Message";
 
+static NSURL *RootsDir2() {
+    static NSURL *rootsDir;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        rootsDir = [[NSFileManager.defaultManager containerURLForSecurityApplicationGroupIdentifier:@"group.app.ish.iSH"] URLByAppendingPathComponent:@"roots"];
+        NSFileManager *manager = [NSFileManager defaultManager];
+        [manager createDirectoryAtURL:rootsDir
+          withIntermediateDirectories:YES
+                           attributes:@{}
+                                error:nil];
+    });
+    return rootsDir;
+}
+
 @implementation AppDelegate
 
 - (int)boot {
 #if !ISH_LINUX
-    NSURL *root = [Roots.instance rootUrl:Roots.instance.defaultRoot];
+//    NSURL *root = [Roots.instance rootUrl:Roots.instance.defaultRoot];
+    
+    NSURL *root = [RootsDir2() URLByAppendingPathComponent:[NSUserDefaults.standardUserDefaults stringForKey:@"Default Root"]];
+    
+    NSLog(@"root: %@", root);
 
     int err = mount_root(&fakefs, [root URLByAppendingPathComponent:@"data"].fileSystemRepresentation);
     if (err < 0)
@@ -151,39 +162,46 @@ static NSString *const kSkipStartupMessage = @"Skip Startup Message";
         return err;
     
     NSArray<NSString *> *command;
-    command = UserPreferences.shared.bootCommand;
+//    command = UserPreferences.shared.bootCommand;
+    NSMutableArray<NSString *> *command1 = [NSMutableArray<NSString *> new];
+    command1[0] = @"/bin/login";
+    command1[1] = @"-f";
+    command1[2] = @"root";
+    command = command1;
+    
     NSLog(@"%@", command);
     char argv[4096];
     [Terminal convertCommand:command toArgs:argv limitSize:sizeof(argv)];
     const char *envp = "TERM=xterm-256color\0";
-    err = do_execve(command[0].UTF8String, command.count, argv, envp);
+//    err = do_execve(command[0].UTF8String, command.count, argv, envp);
+    err = do_execve("/bin/login", 3, argv, envp);
     if (err < 0)
         return err;
     task_start(current);
 
 #else
     // On first launch, this will trigger the import of the default root. Make sure to do this before entering the kernel, because it needs to run something on the main thread, and that would deadlock.
-    [Roots instance];
-    NSArray<NSString *> *args = @[];
-    actuate_kernel([args componentsJoinedByString:@" "].UTF8String);
+//    [Roots instance];
+//    NSArray<NSString *> *args = @[];
+//    actuate_kernel([args componentsJoinedByString:@" "].UTF8String);
 #endif
     
     return 0;
 }
 
 #if ISH_LINUX
-const char *DefaultRootPath() {
-    return [Roots.instance rootUrl:Roots.instance.defaultRoot].fileSystemRepresentation;
-}
-
-void SyncHostname(void) {
-    async_do_in_workqueue(^{
-        char hostname[256];
-        if (gethostname(hostname, sizeof(hostname)) < 0)
-            return;
-        linux_sethostname(hostname);
-    });
-}
+//const char *DefaultRootPath() {
+//    return [Roots.instance rootUrl:Roots.instance.defaultRoot].fileSystemRepresentation;
+//}
+//
+//void SyncHostname(void) {
+//    async_do_in_workqueue(^{
+//        char hostname[256];
+//        if (gethostname(hostname, sizeof(hostname)) < 0)
+//            return;
+//        linux_sethostname(hostname);
+//    });
+//}
 #endif
 
 - (void)configureDns {
@@ -236,7 +254,8 @@ void SyncHostname(void) {
         [alert addAction:[UIAlertAction actionWithTitle:@"Show me how"
                                                   style:UIAlertActionStyleDefault
                                                 handler:^(UIAlertAction * _Nonnull action) {
-            [UIApplication openURL:@"https://go.ish.app/get-apk"];
+//            [UIApplication openURL:@"https://go.ish.app/get-apk"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://go.ish.app/get-apk"] options:@{} completionHandler:nil];
         }]];
         [alert addAction:[UIAlertAction actionWithTitle:@"Don't show again"
                                                   style:UIAlertActionStyleDefault
@@ -247,22 +266,14 @@ void SyncHostname(void) {
 }
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey,id> *)launchOptions {
-    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    if ([defaults boolForKey:@"hail mary"]) {
-        [defaults removeObjectForKey:kPreferenceBootCommandKey];
-        [defaults removeObjectForKey:kPreferenceLaunchCommandKey];
-        [defaults setBool:NO forKey:@"hail mary"];
-    }
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"recovery"])
-        return YES;
 
     bootError = [self boot];
 
 #if ISH_LINUX
-    [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:UIApplication.sharedApplication queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-        SyncHostname();
-    }];
-    SyncHostname();
+//    [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:UIApplication.sharedApplication queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+//        SyncHostname();
+//    }];
+//    SyncHostname();
 #endif
 
     return YES;
@@ -292,13 +303,6 @@ void NetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     uname_hostname_override = self.unameHostname.UTF8String;
 #endif
     
-    [UserPreferences.shared observe:@[@"shouldDisableDimming"] options:NSKeyValueObservingOptionInitial
-                              owner:self usingBlock:^(typeof(self) self) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIApplication.sharedApplication.idleTimerDisabled = UserPreferences.shared.shouldDisableDimming;
-        });
-    }];
-    
     struct sockaddr_in6 address = {
         .sin6_len = sizeof(address),
         .sin6_family = AF_INET6,
@@ -310,19 +314,6 @@ void NetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     SCNetworkReachabilitySetCallback(self.reachability, NetworkReachabilityCallback, &context);
     SCNetworkReachabilityScheduleWithRunLoop(self.reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes);
 
-    if (self.window != nil) {
-        // For iOS <13, where the app delegate owns the window instead of the scene
-        if ([NSUserDefaults.standardUserDefaults boolForKey:@"recovery"]) {
-            UINavigationController *vc = [[UIStoryboard storyboardWithName:@"About" bundle:nil] instantiateInitialViewController];
-            AboutViewController *avc = (AboutViewController *) vc.topViewController;
-            avc.recoveryMode = YES;
-            self.window.rootViewController = vc;
-            return YES;
-        }
-        TerminalViewController *vc = (TerminalViewController *) self.window.rootViewController;
-        currentTerminalViewController = vc;
-        [vc startNewSession];
-    }
     return YES;
 }
 
@@ -356,5 +347,5 @@ void NetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 #if !ISH_LINUX
 NSString *const ProcessExitedNotification = @"ProcessExitedNotification";
 #else
-NSString *const KernelPanicNotification = @"KernelPanicNotification";
+//NSString *const KernelPanicNotification = @"KernelPanicNotification";
 #endif

@@ -93,6 +93,7 @@
     [hideKeyboardButton addTarget: self action: @selector(hideKeyboard) forControlEvents: UIControlEventTouchUpInside];
     
     UIView *kbView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 40)];
+    kbView.backgroundColor = [UIColor whiteColor];
     [kbView addSubview:escapeKey];
     [kbView addSubview:tabKey];
     [kbView addSubview:self.controlKey];
@@ -160,16 +161,6 @@
     [Terminal convertCommand:command toArgs:argv limitSize:sizeof(argv)];
     const char *envp = "TERM=xterm-256color\0";
     
-//    NSLog(@"xxxxxxxxxxx command[0].UTF8String: %s", command[0].UTF8String);
-//    NSLog(@"xxxxxxxxxxx  command.count: %lu", (unsigned long)command.count);
-//    char argv[22] = "/bin/login -f root";
-//    NSLog(@"xxxxxxxxxxx  argv: %s", argv);
-//
-//    for (int i = 0; i < 19; i++) {
-//        NSLog(@"xxxxxxxxxxx  argv[i]: %c", argv[i]);
-//    }
-    
-//    err = do_execve(command[0].UTF8String, command.count, argv, envp);
     err = do_execve("/bin/login", 3, argv, envp);
     if (err < 0)
         return err;
