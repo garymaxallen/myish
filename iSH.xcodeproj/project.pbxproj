@@ -41,11 +41,6 @@
 		BB2B4DAD231D998300CB578B /* term.js in Resources */ = {isa = PBXBuildFile; fileRef = BB4A539C1FAA490C00A72ACE /* term.js */; };
 		BB2B4DAE231D998300CB578B /* term.css in Resources */ = {isa = PBXBuildFile; fileRef = BB4A53AF1FAA787900A72ACE /* term.css */; };
 		BB2B4DAF231D998300CB578B /* term.html in Resources */ = {isa = PBXBuildFile; fileRef = BB4A53A91FAA496700A72ACE /* term.html */; };
-		BB38597827BCEC70000A1082 /* circular.png in Resources */ = {isa = PBXBuildFile; fileRef = BB38597627BCEC70000A1082 /* circular.png */; };
-		BB38597D27BCEC78000A1082 /* dollarblock1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB38597927BCEC78000A1082 /* dollarblock1.png */; };
-		BB38597F27BCEC78000A1082 /* dollarblock2.png in Resources */ = {isa = PBXBuildFile; fileRef = BB38597A27BCEC78000A1082 /* dollarblock2.png */; };
-		BB38598127BCEC78000A1082 /* freeiosterminal.png in Resources */ = {isa = PBXBuildFile; fileRef = BB38597B27BCEC78000A1082 /* freeiosterminal.png */; };
-		BB38598527BCEC84000A1082 /* ishcolontildehash.png in Resources */ = {isa = PBXBuildFile; fileRef = BB38598227BCEC83000A1082 /* ishcolontildehash.png */; };
 		BB38599327BCEE6B000A1082 /* notsurewhatthisis.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B88202589734A00208600 /* notsurewhatthisis.png */; };
 		BB38599427BCEE6B000A1082 /* pydann1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0F553123A0AB9B0032A2A1 /* pydann1.png */; };
 		BB38599527BCEE6B000A1082 /* pydann2.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0F553523A0ACFC0032A2A1 /* pydann2.png */; };
@@ -67,47 +62,14 @@
 		BB3859A527BCEE6B000A1082 /* reworked.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B88172589662A00208600 /* reworked.png */; };
 		BB3859A627BCEE6B000A1082 /* colontildehash.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4A922F24EDA55C002F5A96 /* colontildehash.png */; };
 		BB3859A727BCEE6B000A1082 /* uninspired.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0F552F239F8B360032A2A1 /* uninspired.png */; };
-		BB3859A827BCEE6C000A1082 /* is.png in Resources */ = {isa = PBXBuildFile; fileRef = BB38598327BCEC83000A1082 /* is.png */; };
 		BB6DB261216435340047A611 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6DB260216435330047A611 /* libiconv.tbd */; };
 		BB792B5D1F96D90D00FFB7A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB792B5C1F96D90D00FFB7A4 /* Assets.xcassets */; };
 		BBA8E2C1236FF5EA00515F76 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8E2C0236FF5EA00515F76 /* SystemConfiguration.framework */; };
 		BBAEE339249B58E80069EBB5 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAEE338249B58E80069EBB5 /* libbz2.tbd */; };
-		BBBD741426B7BE2E00321AC5 /* libfakefs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB21A16F2689041500BD19B4 /* libfakefs.a */; };
 		BBBF7B5C2415CDBB00EC4C14 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBBF7B5B2415CDBB00EC4C14 /* Settings.bundle */; };
 		BBBF9CBD27C217B6002A30F7 /* PasteboardDeviceLinux.c in Sources */ = {isa = PBXBuildFile; fileRef = BBBF9CBB27C217A6002A30F7 /* PasteboardDeviceLinux.c */; };
 		BBC3863F276817AD00CC8C2E /* CurrentRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = BB565EA32734F1FB00C93EAE /* CurrentRoot.m */; };
-		BBECF3AE2691330F00DEC937 /* libiSHLinux.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBECF3A22691314C00DEC937 /* libiSHLinux.a */; };
-		BBECF3B9269136FB00DEC937 /* liblinux.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBECF3B8269136E100DEC937 /* liblinux.a */; };
 		BBECF3BC26913F1600DEC937 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB792B541F96D90D00FFB7A4 /* AppDelegate.m */; };
-		BBEF1970268066D1001225BD /* libiSHApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEF191E26806364001225BD /* libiSHApp.a */; };
-		BBEF1972268066D1001225BD /* libish_emu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFB2C5B2590257E00545EAB /* libish_emu.a */; };
-		BBEF1974268066D1001225BD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB235536235D49B300139E00 /* CoreLocation.framework */; };
-		BBEF1975268066D1001225BD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8E2C0236FF5EA00515F76 /* SystemConfiguration.framework */; };
-		BBEF1976268066D1001225BD /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAEE338249B58E80069EBB5 /* libbz2.tbd */; };
-		BBEF1977268066D1001225BD /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6DB260216435330047A611 /* libiconv.tbd */; };
-		BBEF1978268066D1001225BD /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFB55652158644C00DFE6DE /* libresolv.tbd */; };
-		BBEF197D268066D1001225BD /* 3d.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4A923124EDA560002F5A96 /* 3d.png */; };
-		BBEF197E268066D1001225BD /* colontildehash.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4A922F24EDA55C002F5A96 /* colontildehash.png */; };
-		BBEF197F268066D1001225BD /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC8298624EE5853009D042C /* metal.png */; };
-		BBEF1980268066D1001225BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB792B5C1F96D90D00FFB7A4 /* Assets.xcassets */; };
-		BBEF1982268066D1001225BD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBBF7B5B2415CDBB00EC4C14 /* Settings.bundle */; };
-		BBEF1983268066D1001225BD /* pydann1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0F553123A0AB9B0032A2A1 /* pydann1.png */; };
-		BBEF1986268066D1001225BD /* Icons.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB0F552D239F8A790032A2A1 /* Icons.plist */; };
-		BBEF1987268066D1001225BD /* uninspired.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0F552F239F8B360032A2A1 /* uninspired.png */; };
-		BBEF1988268066D1001225BD /* iinhash.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC8298024EDACBB009D042C /* iinhash.png */; };
-		BBEF1989268066D1001225BD /* pydann2.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0F553523A0ACFC0032A2A1 /* pydann2.png */; };
-		BBEF198A268066D1001225BD /* ihash1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0F553323A0AC760032A2A1 /* ihash1.png */; };
-		BBEF198B268066D1001225BD /* term.html in Resources */ = {isa = PBXBuildFile; fileRef = BB4A53A91FAA496700A72ACE /* term.html */; };
-		BBEF198C268066D1001225BD /* notsurewhatthisis.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B88202589734A00208600 /* notsurewhatthisis.png */; };
-		BBEF198D268066D1001225BD /* reworked.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B88172589662A00208600 /* reworked.png */; };
-		BBEF198F268066D1001225BD /* idollarhash.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC8297D24EDAC11009D042C /* idollarhash.png */; };
-		BBEF1990268066D1001225BD /* hterm_all.js in Resources */ = {isa = PBXBuildFile; fileRef = BB2B4DAB231D94C300CB578B /* hterm_all.js */; };
-		BBEF1991268066D1001225BD /* icon1337.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4A922D24EDA461002F5A96 /* icon1337.png */; };
-		BBEF1992268066D1001225BD /* rgb.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B88052589661A00208600 /* rgb.png */; };
-		BBEF1993268066D1001225BD /* term.css in Resources */ = {isa = PBXBuildFile; fileRef = BB4A53AF1FAA787900A72ACE /* term.css */; };
-		BBEF1994268066D1001225BD /* term.js in Resources */ = {isa = PBXBuildFile; fileRef = BB4A539C1FAA490C00A72ACE /* term.js */; };
-		BBEF1995268066D1001225BD /* sprite64.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B880E2589662200208600 /* sprite64.png */; };
-		BBEF1996268066D1001225BD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1B9A4223A5E96900414052 /* icon.png */; };
 		BBFB2CEC2590296B00545EAB /* libish_emu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFB2C5B2590257E00545EAB /* libish_emu.a */; };
 		BBFB55662158644C00DFE6DE /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFB55652158644C00DFE6DE /* libresolv.tbd */; };
 /* End PBXBuildFile section */
@@ -169,20 +131,6 @@
 			remoteGlobalIDString = BBEF191D26806364001225BD;
 			remoteInfo = libiSH;
 		};
-		BBEF1966268066D1001225BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB792B461F96D8E000FFB7A4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BB4A922324ED9402002F5A96;
-			remoteInfo = "iSH pre";
-		};
-		BBEF1968268066D1001225BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB792B461F96D8E000FFB7A4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BBEF191D26806364001225BD;
-			remoteInfo = libiSH;
-		};
 		BBFB2C562590257E00545EAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BB792B461F96D8E000FFB7A4 /* Project object */;
@@ -194,16 +142,6 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BB88F4A32154760800A341FD /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBEF1997268066D1001225BD /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -450,7 +388,6 @@
 		BBECF3BA2691379100DEC937 /* StaticLibLinux.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StaticLibLinux.xcconfig; sourceTree = "<group>"; };
 		BBEF191E26806364001225BD /* libiSHApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiSHApp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEF192C26806546001225BD /* AppLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppLib.xcconfig; sourceTree = "<group>"; };
-		BBEF199C268066D1001225BD /* iSH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEF19BA26806D7E001225BD /* Linux.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Linux.xcconfig; sourceTree = "<group>"; };
 		BBFB2C5B2590257E00545EAB /* libish_emu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libish_emu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBFB2CDA259028DC00545EAB /* StaticLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StaticLib.xcconfig; sourceTree = "<group>"; };
@@ -471,23 +408,6 @@
 				BBAEE339249B58E80069EBB5 /* libbz2.tbd in Frameworks */,
 				BB6DB261216435340047A611 /* libiconv.tbd in Frameworks */,
 				BBFB55662158644C00DFE6DE /* libresolv.tbd in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBEF196F268066D1001225BD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BBECF3B9269136FB00DEC937 /* liblinux.a in Frameworks */,
-				BBECF3AE2691330F00DEC937 /* libiSHLinux.a in Frameworks */,
-				BBEF1970268066D1001225BD /* libiSHApp.a in Frameworks */,
-				BBBD741426B7BE2E00321AC5 /* libfakefs.a in Frameworks */,
-				BBEF1972268066D1001225BD /* libish_emu.a in Frameworks */,
-				BBEF1974268066D1001225BD /* CoreLocation.framework in Frameworks */,
-				BBEF1975268066D1001225BD /* SystemConfiguration.framework in Frameworks */,
-				BBEF1976268066D1001225BD /* libbz2.tbd in Frameworks */,
-				BBEF1977268066D1001225BD /* libiconv.tbd in Frameworks */,
-				BBEF1978268066D1001225BD /* libresolv.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,7 +583,6 @@
 				BB13F7DC200AD81D003D1C4D /* libish.a */,
 				BBFB2C5B2590257E00545EAB /* libish_emu.a */,
 				BBEF191E26806364001225BD /* libiSHApp.a */,
-				BBEF199C268066D1001225BD /* iSH.app */,
 				BB21A16F2689041500BD19B4 /* libfakefs.a */,
 				BBECF3A22691314C00DEC937 /* libiSHLinux.a */,
 				BBECF3B8269136E100DEC937 /* liblinux.a */,
@@ -1022,29 +941,6 @@
 			productReference = BBEF191E26806364001225BD /* libiSHApp.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		BBEF1964268066D1001225BD /* iSH+Linux */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BBEF1999268066D1001225BD /* Build configuration list for PBXNativeTarget "iSH+Linux" */;
-			buildPhases = (
-				BB21A1722689084800BD19B4 /* Sources */,
-				BBEF196F268066D1001225BD /* Frameworks */,
-				BBEF1979268066D1001225BD /* Download Root */,
-				BBEF197A268066D1001225BD /* Generate APK Repositories File */,
-				BBEF197B268066D1001225BD /* Compile JavaScript */,
-				BBEF197C268066D1001225BD /* Resources */,
-				BBEF1997268066D1001225BD /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BBEF1965268066D1001225BD /* PBXTargetDependency */,
-				BBEF1967268066D1001225BD /* PBXTargetDependency */,
-			);
-			name = "iSH+Linux";
-			productName = iSH;
-			productReference = BBEF199C268066D1001225BD /* iSH.app */;
-			productType = "com.apple.product-type.application";
-		};
 		BBFB2C542590257E00545EAB /* libish_emu */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBFB2C582590257E00545EAB /* Build configuration list for PBXNativeTarget "libish_emu" */;
@@ -1118,7 +1014,6 @@
 			targets = (
 				BB792B4F1F96D90D00FFB7A4 /* iSH */,
 				BBEF191D26806364001225BD /* libiSHApp */,
-				BBEF1964268066D1001225BD /* iSH+Linux */,
 				BBECF3A12691314C00DEC937 /* libiSHLinux */,
 				BB13F7CA200ACC31003D1C4D /* Meson */,
 				BB13F7D0200ACCA2003D1C4D /* Ninja */,
@@ -1165,41 +1060,6 @@
 				BB38599F27BCEE6B000A1082 /* icon1337.png in Resources */,
 				BB3859A127BCEE6B000A1082 /* iinhash.png in Resources */,
 				BB38599727BCEE6B000A1082 /* freeiosterminal.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBEF197C268066D1001225BD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BBEF197D268066D1001225BD /* 3d.png in Resources */,
-				BBEF197E268066D1001225BD /* colontildehash.png in Resources */,
-				BBEF197F268066D1001225BD /* metal.png in Resources */,
-				BBEF1980268066D1001225BD /* Assets.xcassets in Resources */,
-				BB38597D27BCEC78000A1082 /* dollarblock1.png in Resources */,
-				BBEF1982268066D1001225BD /* Settings.bundle in Resources */,
-				BBEF1983268066D1001225BD /* pydann1.png in Resources */,
-				BBEF1986268066D1001225BD /* Icons.plist in Resources */,
-				BBEF1987268066D1001225BD /* uninspired.png in Resources */,
-				BB38598527BCEC84000A1082 /* ishcolontildehash.png in Resources */,
-				BBEF1988268066D1001225BD /* iinhash.png in Resources */,
-				BBEF1989268066D1001225BD /* pydann2.png in Resources */,
-				BBEF198A268066D1001225BD /* ihash1.png in Resources */,
-				BBEF198B268066D1001225BD /* term.html in Resources */,
-				BBEF198C268066D1001225BD /* notsurewhatthisis.png in Resources */,
-				BBEF198D268066D1001225BD /* reworked.png in Resources */,
-				BBEF198F268066D1001225BD /* idollarhash.png in Resources */,
-				BB3859A827BCEE6C000A1082 /* is.png in Resources */,
-				BB38597F27BCEC78000A1082 /* dollarblock2.png in Resources */,
-				BBEF1990268066D1001225BD /* hterm_all.js in Resources */,
-				BB38597827BCEC70000A1082 /* circular.png in Resources */,
-				BBEF1991268066D1001225BD /* icon1337.png in Resources */,
-				BBEF1992268066D1001225BD /* rgb.png in Resources */,
-				BBEF1993268066D1001225BD /* term.css in Resources */,
-				BBEF1994268066D1001225BD /* term.js in Resources */,
-				BBEF1995268066D1001225BD /* sprite64.png in Resources */,
-				BBEF1996268066D1001225BD /* icon.png in Resources */,
-				BB38598127BCEC78000A1082 /* freeiosterminal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1308,60 +1168,6 @@
 			shellPath = /bin/sh;
 			shellScript = "mkdir -p \"$CONFIGURATION_BUILD_DIR\"\nln -sf \"$MESON_BUILD_DIR/deps/$PRODUCT_NAME.a\" \"$CONFIGURATION_BUILD_DIR\"\n";
 		};
-		BBEF1979268066D1001225BD /* Download Root */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Download Root";
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(CONTENTS_FOLDER_PATH)/root.tar.gz",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "curl --socks5-hostname 127.0.0.1:1080 -L \"https://$ROOTFS_URL\" -o \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BBEF197A268066D1001225BD /* Generate APK Repositories File */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/deps/aports/main/x86/index.txt",
-				"$(SRCROOT)/deps/aports/community/x86/index.txt",
-			);
-			name = "Generate APK Repositories File";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(CONTENTS_FOLDER_PATH)/repositories.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/bin/python3;
-			shellScript = "import os\ndef trim(x, start, end):\n    assert x.startswith(start)\n    assert x.endswith(end)\n    return x[len(start):-len(end)]\nrepos_file = []\nfor repo in ['main', 'community']:\n    with open(f'{os.environ[\"SRCROOT\"]}/deps/aports/{repo}/x86/index.txt') as f:\n        index_name = f.read()\n    index_name = trim(index_name, 'APKINDEX-', '.tar.gz\\n')\n    repos_file.append(f'http://apk.ish.app/{index_name}/{repo}')\nwith open(os.path.join(os.environ['BUILT_PRODUCTS_DIR'], os.environ['CONTENTS_FOLDER_PATH'], 'repositories.txt'), 'w') as f:\n    for line in repos_file:\n        print(line, file=f)\n";
-		};
-		BBEF197B268066D1001225BD /* Compile JavaScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Compile JavaScript";
-			outputPaths = (
-				"$(SRCROOT)/deps/hterm/dist/js/hterm_all.js",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/sh -e";
-			shellScript = "cd $SRCROOT/deps/libapps\n./hterm/bin/mkdist\n";
-			showEnvVarsInLog = 0;
-		};
 		BBF1248B1FA7BF530088FB50 /* Download Root */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1396,13 +1202,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BB21A1722689084800BD19B4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BB21A17826890A5B00BD19B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1479,16 +1278,6 @@
 			isa = PBXTargetDependency;
 			target = BBEF191D26806364001225BD /* libiSHApp */;
 			targetProxy = BBEF1928268063FD001225BD /* PBXContainerItemProxy */;
-		};
-		BBEF1965268066D1001225BD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BB4A922324ED9402002F5A96 /* iSH pre */;
-			targetProxy = BBEF1966268066D1001225BD /* PBXContainerItemProxy */;
-		};
-		BBEF1967268066D1001225BD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BBEF191D26806364001225BD /* libiSHApp */;
-			targetProxy = BBEF1968268066D1001225BD /* PBXContainerItemProxy */;
 		};
 		BBFB2C552590257E00545EAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1621,13 +1410,6 @@
 			};
 			name = DebugLinux;
 		};
-		BB7F62072688EAB5003C0220 /* DebugLinux */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB0B86CD2586FD8800208600 /* App.xcconfig */;
-			buildSettings = {
-			};
-			name = DebugLinux;
-		};
 		BB7F62082688EAB5003C0220 /* DebugLinux */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBEF192C26806546001225BD /* AppLib.xcconfig */;
@@ -1737,20 +1519,6 @@
 			};
 			name = Release;
 		};
-		BBEF199A268066D1001225BD /* Debug-ApplePleaseFixFB19282108 */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB0B86CD2586FD8800208600 /* App.xcconfig */;
-			buildSettings = {
-			};
-			name = "Debug-ApplePleaseFixFB19282108";
-		};
-		BBEF199B268066D1001225BD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB0B86CD2586FD8800208600 /* App.xcconfig */;
-			buildSettings = {
-			};
-			name = Release;
-		};
 		BBEF19AB26806D1F001225BD /* ReleaseLinux */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB28C7522689522700BDC834 /* ProjectReleaseLinux.xcconfig */;
@@ -1760,13 +1528,6 @@
 			name = ReleaseLinux;
 		};
 		BBEF19AC26806D1F001225BD /* ReleaseLinux */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB0B86CD2586FD8800208600 /* App.xcconfig */;
-			buildSettings = {
-			};
-			name = ReleaseLinux;
-		};
-		BBEF19AD26806D1F001225BD /* ReleaseLinux */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB0B86CD2586FD8800208600 /* App.xcconfig */;
 			buildSettings = {
@@ -1935,17 +1696,6 @@
 				BB7F62082688EAB5003C0220 /* DebugLinux */,
 				BBEF192526806364001225BD /* Release */,
 				BBEF19AE26806D1F001225BD /* ReleaseLinux */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BBEF1999268066D1001225BD /* Build configuration list for PBXNativeTarget "iSH+Linux" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BBEF199A268066D1001225BD /* Debug-ApplePleaseFixFB19282108 */,
-				BB7F62072688EAB5003C0220 /* DebugLinux */,
-				BBEF199B268066D1001225BD /* Release */,
-				BBEF19AD26806D1F001225BD /* ReleaseLinux */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
