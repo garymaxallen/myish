@@ -516,7 +516,7 @@
 			path = platform;
 			sourceTree = "<group>";
 		};
-		BB4A53931FAA393B00A72ACE /* most of the code */ = {
+		BB4A53931FAA393B00A72ACE /* mostcode */ = {
 			isa = PBXGroup;
 			children = (
 				BB8636F82167F4F200E7ADC0 /* emu */,
@@ -530,7 +530,7 @@
 				BB7D93812087C2890008DA78 /* debug.h */,
 				BB7D93352087C2880008DA78 /* xX_main_Xx.h */,
 			);
-			name = "most of the code";
+			name = mostcode;
 			sourceTree = "<group>";
 		};
 		BB4A53991FAA40FD00A72ACE /* terminal */ = {
@@ -549,7 +549,7 @@
 			children = (
 				BB792B521F96D90D00FFB7A4 /* app */,
 				BB9C7B88240A343400F5D4F0 /* iSH.xcconfig */,
-				BB4A53931FAA393B00A72ACE /* most of the code */,
+				BB4A53931FAA393B00A72ACE /* mostcode */,
 				BB18B27F1F97F2590059FCD8 /* Scripts */,
 				BB792B511F96D90D00FFB7A4 /* Products */,
 				BB792B7D1F96E32B00FFB7A4 /* Frameworks */,
