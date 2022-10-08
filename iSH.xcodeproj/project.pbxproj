@@ -109,13 +109,6 @@
 			remoteGlobalIDString = BB4A922324ED9402002F5A96;
 			remoteInfo = "iSH pre";
 		};
-		BBECF3B1269136E100DEC937 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB792B461F96D8E000FFB7A4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BB13F7D0200ACCA2003D1C4D;
-			remoteInfo = Ninja;
-		};
 		BBEF1928268063FD001225BD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BB792B461F96D8E000FFB7A4 /* Project object */;
@@ -375,7 +368,6 @@
 		BBC8298624EE5853009D042C /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metal.png; sourceTree = "<group>"; };
 		BBCC9D942365430800424C83 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		BBCC9D952365430800424C83 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		BBECF3B8269136E100DEC937 /* liblinux.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblinux.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBECF3BA2691379100DEC937 /* StaticLibLinux.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StaticLibLinux.xcconfig; sourceTree = "<group>"; };
 		BBEF191E26806364001225BD /* libiSHApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiSHApp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEF192C26806546001225BD /* AppLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppLib.xcconfig; sourceTree = "<group>"; };
@@ -575,7 +567,6 @@
 				BBFB2C5B2590257E00545EAB /* libish_emu.a */,
 				BBEF191E26806364001225BD /* libiSHApp.a */,
 				BB21A16F2689041500BD19B4 /* libfakefs.a */,
-				BBECF3B8269136E100DEC937 /* liblinux.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -884,22 +875,6 @@
 			productReference = BB792B501F96D90D00FFB7A4 /* iSH.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BBECF3AF269136E100DEC937 /* liblinux */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BBECF3B3269136E100DEC937 /* Build configuration list for PBXNativeTarget "liblinux" */;
-			buildPhases = (
-				BBECF3B2269136E100DEC937 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BBECF3B0269136E100DEC937 /* PBXTargetDependency */,
-			);
-			name = liblinux;
-			productName = libish;
-			productReference = BBECF3B8269136E100DEC937 /* liblinux.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		BBEF191D26806364001225BD /* libiSHApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBEF192626806364001225BD /* Build configuration list for PBXNativeTarget "libiSHApp" */;
@@ -990,7 +965,6 @@
 				BB13F7DB200AD81D003D1C4D /* libish */,
 				BB21A1662689041500BD19B4 /* libfakefs */,
 				BBFB2C542590257E00545EAB /* libish_emu */,
-				BBECF3AF269136E100DEC937 /* liblinux */,
 				BB4A922324ED9402002F5A96 /* iSH pre */,
 			);
 		};
@@ -1124,20 +1098,6 @@
 			shellPath = /bin/sh;
 			shellScript = "python3 - \"${SRCROOT}/app/Icons/Icons.plist\" \"${BUILT_PRODUCTS_DIR}/infoplisticons.h\" <<END\nimport plistlib\nimport sys\nprint(sys.argv)\nwith open(sys.argv[1], 'rb') as plist:\n    icons = plistlib.load(plist)\nalt_icons = '<key>CFBundleAlternateIcons</key><dict>'\nfor icon in icons.keys():\n    if icon == '': continue\n    alt_icons += '''<key>{0}</key>\n<dict>\n<key>CFBundleIconFiles</key>\n<array><string>{0}</string></array>\n</dict>'''.format(icon)\nalt_icons += '</dict>'\nicon_stuff = '''</string>\n<key>CFBundleIcons</key><dict>{0}</dict>\n<key>CFBundleIcons~ipad</key><dict>{0}</dict>\n<key>kxcode</key><string>'''.format(alt_icons)\nicon_define = '#define ICON_STUFF ' + icon_stuff.replace('\\n', '')\nwith open(sys.argv[2], 'w') as output:\n    output.write(icon_define)\nEND\ntouch \"${SRCROOT}/app/Info.plist\"\n";
 		};
-		BBECF3B2269136E100DEC937 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(MESON_BUILD_DIR)/$(PRODUCT_NAME).a",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "mkdir -p \"$CONFIGURATION_BUILD_DIR\"\nln -sf \"$MESON_BUILD_DIR/deps/$PRODUCT_NAME.a\" \"$CONFIGURATION_BUILD_DIR\"\n";
-		};
 		BBF1248B1FA7BF530088FB50 /* Download Root */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1225,11 +1185,6 @@
 			isa = PBXTargetDependency;
 			target = BB4A922324ED9402002F5A96 /* iSH pre */;
 			targetProxy = BB4A922724ED940C002F5A96 /* PBXContainerItemProxy */;
-		};
-		BBECF3B0269136E100DEC937 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BB13F7D0200ACCA2003D1C4D /* Ninja */;
-			targetProxy = BBECF3B1269136E100DEC937 /* PBXContainerItemProxy */;
 		};
 		BBEF1929268063FD001225BD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1406,34 +1361,6 @@
 			};
 			name = DebugLinux;
 		};
-		BBECF3B4269136E100DEC937 /* Debug-ApplePleaseFixFB19282108 */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBFB2CDA259028DC00545EAB /* StaticLib.xcconfig */;
-			buildSettings = {
-			};
-			name = "Debug-ApplePleaseFixFB19282108";
-		};
-		BBECF3B5269136E100DEC937 /* DebugLinux */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBFB2CDA259028DC00545EAB /* StaticLib.xcconfig */;
-			buildSettings = {
-			};
-			name = DebugLinux;
-		};
-		BBECF3B6269136E100DEC937 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBFB2CDA259028DC00545EAB /* StaticLib.xcconfig */;
-			buildSettings = {
-			};
-			name = Release;
-		};
-		BBECF3B7269136E100DEC937 /* ReleaseLinux */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBFB2CDA259028DC00545EAB /* StaticLib.xcconfig */;
-			buildSettings = {
-			};
-			name = ReleaseLinux;
-		};
 		BBEF192426806364001225BD /* Debug-ApplePleaseFixFB19282108 */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBEF192C26806546001225BD /* AppLib.xcconfig */;
@@ -1592,17 +1519,6 @@
 				BB7F62062688EAB5003C0220 /* DebugLinux */,
 				BB792B651F96D90D00FFB7A4 /* Release */,
 				BBEF19AC26806D1F001225BD /* ReleaseLinux */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BBECF3B3269136E100DEC937 /* Build configuration list for PBXNativeTarget "liblinux" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BBECF3B4269136E100DEC937 /* Debug-ApplePleaseFixFB19282108 */,
-				BBECF3B5269136E100DEC937 /* DebugLinux */,
-				BBECF3B6269136E100DEC937 /* Release */,
-				BBECF3B7269136E100DEC937 /* ReleaseLinux */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
