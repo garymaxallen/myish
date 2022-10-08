@@ -785,20 +785,6 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
-		BB235532235D472F00139E00 /* Devices */ = {
-			isa = PBXGroup;
-			children = (
-				650B337222EA235C00B4C03E /* PasteboardDevice.h */,
-				650B337322EA235C00B4C03E /* PasteboardDevice.m */,
-				BBBF9CBB27C217A6002A30F7 /* PasteboardDeviceLinux.c */,
-				BB235535235D489400139E00 /* LocationDevice.h */,
-				BB235533235D488400139E00 /* LocationDevice.m */,
-				408A263B23644102008A4E81 /* iOSFS.h */,
-				408A2639236440F8008A4E81 /* iOSFS.m */,
-			);
-			name = Devices;
-			sourceTree = "<group>";
-		};
 		BB2D71072354244700A10D1E /* platform */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,8 +885,14 @@
 				BB0FC5911F980A6B00803272 /* Terminal.m */,
 				BB23F58B231E1D1400585522 /* ScrollbarView.h */,
 				BB23F58C231E1D1400585522 /* ScrollbarView.m */,
+				650B337222EA235C00B4C03E /* PasteboardDevice.h */,
+				650B337322EA235C00B4C03E /* PasteboardDevice.m */,
+				BBBF9CBB27C217A6002A30F7 /* PasteboardDeviceLinux.c */,
+				BB235535235D489400139E00 /* LocationDevice.h */,
+				BB235533235D488400139E00 /* LocationDevice.m */,
+				408A263B23644102008A4E81 /* iOSFS.h */,
+				408A2639236440F8008A4E81 /* iOSFS.m */,
 				BB4A53991FAA40FD00A72ACE /* terminal */,
-				BB235532235D472F00139E00 /* Devices */,
 				BBFB557221586C6600DFE6DE /* Utilities */,
 				BBBF7B5B2415CDBB00EC4C14 /* Settings.bundle */,
 				BB792B5C1F96D90D00FFB7A4 /* Assets.xcassets */,
