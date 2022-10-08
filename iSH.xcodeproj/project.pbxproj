@@ -99,8 +99,6 @@
 		497F6D87254E62E100C82F46 /* libish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13F7DC200AD81D003D1C4D /* libish.a */; };
 		63C3B15628E0915400930DA1 /* consola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C3B15328E0909B00930DA1 /* consola.ttf */; };
 		BB0F552E239F8A790032A2A1 /* Icons.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB0F552D239F8A790032A2A1 /* Icons.plist */; };
-		BB10E5C9248DBAAC009C7A74 /* libarchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB10E5C8248DBAA1009C7A74 /* libarchive.a */; };
-		BB10E5D0248DC21D009C7A74 /* Roots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB10E5CF248DC21D009C7A74 /* Roots.storyboard */; };
 		BB123ACC26C9EFD900419CDA /* LinuxTTY.c in Sources */ = {isa = PBXBuildFile; fileRef = BB123ACB26C9EFD900419CDA /* LinuxTTY.c */; };
 		BB123ACE26C9F13500419CDA /* IOSCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = BB123ACD26C9F13500419CDA /* IOSCalls.m */; };
 		BB13F7EA200ADCED003D1C4D /* libish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13F7DC200AD81D003D1C4D /* libish.a */; };
@@ -109,14 +107,12 @@
 		BB21A1862689500000BD19B4 /* libish_emu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFB2C5B2590257E00545EAB /* libish_emu.a */; };
 		BB235537235D49B300139E00 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB235536235D49B300139E00 /* CoreLocation.framework */; };
 		BB28C79526896B1F00BDC834 /* TerminalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB792B571F96D90D00FFB7A4 /* TerminalViewController.m */; };
-		BB28C79626896B1F00BDC834 /* ProgressReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAEE33B249BDADC0069EBB5 /* ProgressReportViewController.m */; };
 		BB28C79726896B1F00BDC834 /* TerminalView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB78AB2A1FAD22440013E782 /* TerminalView.m */; };
 		BB28C79826896B1F00BDC834 /* ScrollbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB23F58C231E1D1400585522 /* ScrollbarView.m */; };
 		BB28C79926896B1F00BDC834 /* DelayedUITask.m in Sources */ = {isa = PBXBuildFile; fileRef = BB455E101FB37F6600AFB48B /* DelayedUITask.m */; };
 		BB28C79A26896B1F00BDC834 /* Terminal.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0FC5911F980A6B00803272 /* Terminal.m */; };
 		BB28C79D26896B1F00BDC834 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCC9D952365430800424C83 /* SceneDelegate.m */; };
 		BB28C79F26896B1F00BDC834 /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB149E7F256DC97C00F57815 /* PassthroughView.m */; };
-		BB28C7A126896B1F00BDC834 /* RootsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB10E5D2248DCFEA009C7A74 /* RootsTableViewController.m */; };
 		BB28C7A426896B1F00BDC834 /* AppGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9C7B84240A240E00F5D4F0 /* AppGroup.m */; };
 		BB28C7A526896B1F00BDC834 /* UIApplication+OpenURL.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB557B215878C600DFE6DE /* UIApplication+OpenURL.m */; };
 		BB28C7A726896B1F00BDC834 /* UIViewController+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB557021586C4800DFE6DE /* UIViewController+Extras.m */; };
@@ -126,7 +122,6 @@
 		BB28C7BA268975AA00BDC834 /* iOSFS.m in Sources */ = {isa = PBXBuildFile; fileRef = 408A2639236440F8008A4E81 /* iOSFS.m */; };
 		BB28C7BB268975AE00BDC834 /* LocationDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = BB235533235D488400139E00 /* LocationDevice.m */; };
 		BB28C7BC268975B000BDC834 /* PasteboardDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 650B337322EA235C00B4C03E /* PasteboardDevice.m */; };
-		BB28C7BF2689799800BDC834 /* Roots.m in Sources */ = {isa = PBXBuildFile; fileRef = BB10E5CD248DBE66009C7A74 /* Roots.m */; };
 		BB2B4DAC231D94C300CB578B /* hterm_all.js in Resources */ = {isa = PBXBuildFile; fileRef = BB2B4DAB231D94C300CB578B /* hterm_all.js */; };
 		BB2B4DAD231D998300CB578B /* term.js in Resources */ = {isa = PBXBuildFile; fileRef = BB4A539C1FAA490C00A72ACE /* term.js */; };
 		BB2B4DAE231D998300CB578B /* term.css in Resources */ = {isa = PBXBuildFile; fileRef = BB4A53AF1FAA787900A72ACE /* term.css */; };
@@ -160,7 +155,6 @@
 		BB3859A827BCEE6C000A1082 /* is.png in Resources */ = {isa = PBXBuildFile; fileRef = BB38598327BCEC83000A1082 /* is.png */; };
 		BB41591F255EF9E300E0950C /* UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB41591E255EF9E300E0950C /* UITests.m */; };
 		BB6DB261216435340047A611 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6DB260216435330047A611 /* libiconv.tbd */; };
-		BB77636726E486A7008DB44A /* fakefs.c in Sources */ = {isa = PBXBuildFile; fileRef = BB10E5C2248DBA7B009C7A74 /* fakefs.c */; };
 		BB792B5D1F96D90D00FFB7A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB792B5C1F96D90D00FFB7A4 /* Assets.xcassets */; };
 		BB88F4942154760800A341FD /* FileProviderExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BB88F4932154760800A341FD /* FileProviderExtension.m */; };
 		BB88F4972154760800A341FD /* FileProviderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BB88F4962154760800A341FD /* FileProviderItem.m */; };
@@ -186,7 +180,6 @@
 		BBEEA9EA277DAB400069495B /* LinuxPTY.c in Sources */ = {isa = PBXBuildFile; fileRef = BBEEA9E9277DAB400069495B /* LinuxPTY.c */; };
 		BBEF1970268066D1001225BD /* libiSHApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEF191E26806364001225BD /* libiSHApp.a */; };
 		BBEF1972268066D1001225BD /* libish_emu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFB2C5B2590257E00545EAB /* libish_emu.a */; };
-		BBEF1973268066D1001225BD /* libarchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB10E5C8248DBAA1009C7A74 /* libarchive.a */; };
 		BBEF1974268066D1001225BD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB235536235D49B300139E00 /* CoreLocation.framework */; };
 		BBEF1975268066D1001225BD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8E2C0236FF5EA00515F76 /* SystemConfiguration.framework */; };
 		BBEF1976268066D1001225BD /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAEE338249B58E80069EBB5 /* libbz2.tbd */; };
@@ -206,7 +199,6 @@
 		BBEF198B268066D1001225BD /* term.html in Resources */ = {isa = PBXBuildFile; fileRef = BB4A53A91FAA496700A72ACE /* term.html */; };
 		BBEF198C268066D1001225BD /* notsurewhatthisis.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B88202589734A00208600 /* notsurewhatthisis.png */; };
 		BBEF198D268066D1001225BD /* reworked.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B88172589662A00208600 /* reworked.png */; };
-		BBEF198E268066D1001225BD /* Roots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB10E5CF248DC21D009C7A74 /* Roots.storyboard */; };
 		BBEF198F268066D1001225BD /* idollarhash.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC8297D24EDAC11009D042C /* idollarhash.png */; };
 		BBEF1990268066D1001225BD /* hterm_all.js in Resources */ = {isa = PBXBuildFile; fileRef = BB2B4DAB231D94C300CB578B /* hterm_all.js */; };
 		BBEF1991268066D1001225BD /* icon1337.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4A922D24EDA461002F5A96 /* icon1337.png */; };
@@ -227,20 +219,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = BB13F7DB200AD81D003D1C4D;
 			remoteInfo = libish;
-		};
-		BB10E5C7248DBAA1009C7A74 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB10E0C1248DA5B0009C7A74 /* libarchive.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BB10E0D6248DA67B009C7A74;
-			remoteInfo = libarchive;
-		};
-		BB10E5CA248DBAB7009C7A74 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB10E0C1248DA5B0009C7A74 /* libarchive.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BB10E0D5248DA67B009C7A74;
-			remoteInfo = libarchive;
 		};
 		BB13F7D4200ACCA8003D1C4D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -325,13 +303,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = BBEF191D26806364001225BD;
 			remoteInfo = libiSH;
-		};
-		BBEF196A268066D1001225BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB10E0C1248DA5B0009C7A74 /* libarchive.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BB10E0D5248DA67B009C7A74;
-			remoteInfo = libarchive;
 		};
 		BBFB2C562590257E00545EAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -549,13 +520,6 @@
 		BB0F553523A0ACFC0032A2A1 /* pydann2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pydann2.png; sourceTree = "<group>"; };
 		BB0FC5901F980A6B00803272 /* Terminal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Terminal.h; sourceTree = "<group>"; };
 		BB0FC5911F980A6B00803272 /* Terminal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Terminal.m; sourceTree = "<group>"; };
-		BB10E0C1248DA5B0009C7A74 /* libarchive.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libarchive.xcodeproj; path = ../deps/libarchive.xcodeproj; sourceTree = "<group>"; };
-		BB10E5C2248DBA7B009C7A74 /* fakefs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fakefs.c; path = tools/fakefs.c; sourceTree = SOURCE_ROOT; };
-		BB10E5CC248DBE66009C7A74 /* Roots.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Roots.h; sourceTree = "<group>"; };
-		BB10E5CD248DBE66009C7A74 /* Roots.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Roots.m; sourceTree = "<group>"; };
-		BB10E5CF248DC21D009C7A74 /* Roots.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Roots.storyboard; sourceTree = "<group>"; };
-		BB10E5D1248DCFEA009C7A74 /* RootsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootsTableViewController.h; sourceTree = "<group>"; };
-		BB10E5D2248DCFEA009C7A74 /* RootsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootsTableViewController.m; sourceTree = "<group>"; };
 		BB123ACB26C9EFD900419CDA /* LinuxTTY.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinuxTTY.c; sourceTree = "<group>"; };
 		BB123ACD26C9F13500419CDA /* IOSCalls.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSCalls.m; sourceTree = "<group>"; };
 		BB13F4DC21C5770000343E17 /* NSError+ISHErrno.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+ISHErrno.h"; sourceTree = "<group>"; };
@@ -626,8 +590,6 @@
 		BB9C7B88240A343400F5D4F0 /* iSH.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = iSH.xcconfig; path = app/iSH.xcconfig; sourceTree = "<group>"; };
 		BBA8E2C0236FF5EA00515F76 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BBAEE338249B58E80069EBB5 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
-		BBAEE33A249BDADC0069EBB5 /* ProgressReportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressReportViewController.h; sourceTree = "<group>"; };
-		BBAEE33B249BDADC0069EBB5 /* ProgressReportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressReportViewController.m; sourceTree = "<group>"; };
 		BBBF7B5B2415CDBB00EC4C14 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		BBBF9CBB27C217A6002A30F7 /* PasteboardDeviceLinux.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = PasteboardDeviceLinux.c; sourceTree = "<group>"; };
 		BBBF9CC027C441C0002A30F7 /* fix_path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fix_path.h; sourceTree = "<group>"; };
@@ -688,7 +650,6 @@
 				BB21A18426890C7E00BD19B4 /* libfakefs.a in Frameworks */,
 				BB13F7EA200ADCED003D1C4D /* libish.a in Frameworks */,
 				BBFB2CEC2590296B00545EAB /* libish_emu.a in Frameworks */,
-				BB10E5C9248DBAAC009C7A74 /* libarchive.a in Frameworks */,
 				BB235537235D49B300139E00 /* CoreLocation.framework in Frameworks */,
 				BBA8E2C1236FF5EA00515F76 /* SystemConfiguration.framework in Frameworks */,
 				BBAEE339249B58E80069EBB5 /* libbz2.tbd in Frameworks */,
@@ -715,7 +676,6 @@
 				BBEF1970268066D1001225BD /* libiSHApp.a in Frameworks */,
 				BBBD741426B7BE2E00321AC5 /* libfakefs.a in Frameworks */,
 				BBEF1972268066D1001225BD /* libish_emu.a in Frameworks */,
-				BBEF1973268066D1001225BD /* libarchive.a in Frameworks */,
 				BBEF1974268066D1001225BD /* CoreLocation.framework in Frameworks */,
 				BBEF1975268066D1001225BD /* SystemConfiguration.framework in Frameworks */,
 				BBEF1976268066D1001225BD /* libbz2.tbd in Frameworks */,
@@ -798,30 +758,6 @@
 				BB28C7522689522700BDC834 /* ProjectReleaseLinux.xcconfig */,
 			);
 			name = Configs;
-			sourceTree = "<group>";
-		};
-		BB10E5C1248DB961009C7A74 /* Roots */ = {
-			isa = PBXGroup;
-			children = (
-				BB10E5CC248DBE66009C7A74 /* Roots.h */,
-				BB10E5CD248DBE66009C7A74 /* Roots.m */,
-				BB10E5CF248DC21D009C7A74 /* Roots.storyboard */,
-				BB10E5D1248DCFEA009C7A74 /* RootsTableViewController.h */,
-				BB10E5D2248DCFEA009C7A74 /* RootsTableViewController.m */,
-				BBAEE33A249BDADC0069EBB5 /* ProgressReportViewController.h */,
-				BBAEE33B249BDADC0069EBB5 /* ProgressReportViewController.m */,
-				BB10E5C2248DBA7B009C7A74 /* fakefs.c */,
-				BB10E0C1248DA5B0009C7A74 /* libarchive.xcodeproj */,
-			);
-			name = Roots;
-			sourceTree = "<group>";
-		};
-		BB10E5C4248DBAA1009C7A74 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BB10E5C8248DBAA1009C7A74 /* libarchive.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		BB18B27F1F97F2590059FCD8 /* Scripts */ = {
@@ -979,7 +915,6 @@
 				BBECF39C2691312500DEC937 /* LinuxInterop */,
 				BB4A53991FAA40FD00A72ACE /* terminal */,
 				BB235532235D472F00139E00 /* Devices */,
-				BB10E5C1248DB961009C7A74 /* Roots */,
 				BBFB557221586C6600DFE6DE /* Utilities */,
 				BBBF7B5B2415CDBB00EC4C14 /* Settings.bundle */,
 				BB792B5C1F96D90D00FFB7A4 /* Assets.xcassets */,
@@ -1353,7 +1288,6 @@
 			dependencies = (
 				BB4A922824ED940C002F5A96 /* PBXTargetDependency */,
 				BBEF1929268063FD001225BD /* PBXTargetDependency */,
-				BB10E5CB248DBAB7009C7A74 /* PBXTargetDependency */,
 				BB13F7E7200AD874003D1C4D /* PBXTargetDependency */,
 				BB88F49E2154760800A341FD /* PBXTargetDependency */,
 			);
@@ -1443,7 +1377,6 @@
 			dependencies = (
 				BBEF1965268066D1001225BD /* PBXTargetDependency */,
 				BBEF1967268066D1001225BD /* PBXTargetDependency */,
-				BBEF1969268066D1001225BD /* PBXTargetDependency */,
 			);
 			name = "iSH+Linux";
 			productName = iSH;
@@ -1541,12 +1474,6 @@
 			mainGroup = BB792B451F96D8E000FFB7A4;
 			productRefGroup = BB792B511F96D90D00FFB7A4 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = BB10E5C4248DBAA1009C7A74 /* Products */;
-					ProjectRef = BB10E0C1248DA5B0009C7A74 /* libarchive.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BB792B4F1F96D90D00FFB7A4 /* iSH */,
@@ -1567,16 +1494,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		BB10E5C8248DBAA1009C7A74 /* libarchive.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libarchive.a;
-			remoteRef = BB10E5C7248DBAA1009C7A74 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BB41591A255EF9E300E0950C /* Resources */ = {
@@ -1609,7 +1526,6 @@
 				BB2B4DAF231D998300CB578B /* term.html in Resources */,
 				63C3B15628E0915400930DA1 /* consola.ttf in Resources */,
 				BB3859A027BCEE6B000A1082 /* 3d.png in Resources */,
-				BB10E5D0248DC21D009C7A74 /* Roots.storyboard in Resources */,
 				BB2B4DAC231D94C300CB578B /* hterm_all.js in Resources */,
 				BB3859A327BCEE6B000A1082 /* ihash1.png in Resources */,
 				BB2B4DAE231D998300CB578B /* term.css in Resources */,
@@ -1650,7 +1566,6 @@
 				BBEF198B268066D1001225BD /* term.html in Resources */,
 				BBEF198C268066D1001225BD /* notsurewhatthisis.png in Resources */,
 				BBEF198D268066D1001225BD /* reworked.png in Resources */,
-				BBEF198E268066D1001225BD /* Roots.storyboard in Resources */,
 				BBEF198F268066D1001225BD /* idollarhash.png in Resources */,
 				BB3859A827BCEE6C000A1082 /* is.png in Resources */,
 				BB38597F27BCEC78000A1082 /* dollarblock2.png in Resources */,
@@ -2008,21 +1923,17 @@
 				BB28C79526896B1F00BDC834 /* TerminalViewController.m in Sources */,
 				BB123ACE26C9F13500419CDA /* IOSCalls.m in Sources */,
 				BBC3863F276817AD00CC8C2E /* CurrentRoot.m in Sources */,
-				BB28C79626896B1F00BDC834 /* ProgressReportViewController.m in Sources */,
 				BB28C79726896B1F00BDC834 /* TerminalView.m in Sources */,
 				BB28C79826896B1F00BDC834 /* ScrollbarView.m in Sources */,
 				BB28C79926896B1F00BDC834 /* DelayedUITask.m in Sources */,
-				BB28C7BF2689799800BDC834 /* Roots.m in Sources */,
 				BB28C79A26896B1F00BDC834 /* Terminal.m in Sources */,
 				BB28C79D26896B1F00BDC834 /* SceneDelegate.m in Sources */,
 				BB28C79F26896B1F00BDC834 /* PassthroughView.m in Sources */,
-				BB28C7A126896B1F00BDC834 /* RootsTableViewController.m in Sources */,
 				BB28C7A426896B1F00BDC834 /* AppGroup.m in Sources */,
 				BBECF3BC26913F1600DEC937 /* AppDelegate.m in Sources */,
 				BB28C7A526896B1F00BDC834 /* UIApplication+OpenURL.m in Sources */,
 				BB28C7A726896B1F00BDC834 /* UIViewController+Extras.m in Sources */,
 				BB28C7A826896B1F00BDC834 /* NSObject+SaneKVO.m in Sources */,
-				BB77636726E486A7008DB44A /* fakefs.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2033,11 +1944,6 @@
 			isa = PBXTargetDependency;
 			target = BB13F7DB200AD81D003D1C4D /* libish */;
 			targetProxy = 497F6D5A254E609000C82F46 /* PBXContainerItemProxy */;
-		};
-		BB10E5CB248DBAB7009C7A74 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libarchive;
-			targetProxy = BB10E5CA248DBAB7009C7A74 /* PBXContainerItemProxy */;
 		};
 		BB13F7D5200ACCA8003D1C4D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2098,11 +2004,6 @@
 			isa = PBXTargetDependency;
 			target = BBEF191D26806364001225BD /* libiSHApp */;
 			targetProxy = BBEF1968268066D1001225BD /* PBXContainerItemProxy */;
-		};
-		BBEF1969268066D1001225BD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libarchive;
-			targetProxy = BBEF196A268066D1001225BD /* PBXContainerItemProxy */;
 		};
 		BBFB2C552590257E00545EAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
