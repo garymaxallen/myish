@@ -144,7 +144,6 @@
 		BB3859A627BCEE6B000A1082 /* colontildehash.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4A922F24EDA55C002F5A96 /* colontildehash.png */; };
 		BB3859A727BCEE6B000A1082 /* uninspired.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0F552F239F8B360032A2A1 /* uninspired.png */; };
 		BB3859A827BCEE6C000A1082 /* is.png in Resources */ = {isa = PBXBuildFile; fileRef = BB38598327BCEC83000A1082 /* is.png */; };
-		BB41591F255EF9E300E0950C /* UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB41591E255EF9E300E0950C /* UITests.m */; };
 		BB6DB261216435340047A611 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6DB260216435330047A611 /* libiconv.tbd */; };
 		BB792B5D1F96D90D00FFB7A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB792B5C1F96D90D00FFB7A4 /* Assets.xcassets */; };
 		BBA8E2C1236FF5EA00515F76 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8E2C0236FF5EA00515F76 /* SystemConfiguration.framework */; };
@@ -153,8 +152,6 @@
 		BBBF7B5C2415CDBB00EC4C14 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBBF7B5B2415CDBB00EC4C14 /* Settings.bundle */; };
 		BBBF9CBD27C217B6002A30F7 /* PasteboardDeviceLinux.c in Sources */ = {isa = PBXBuildFile; fileRef = BBBF9CBB27C217A6002A30F7 /* PasteboardDeviceLinux.c */; };
 		BBC3863F276817AD00CC8C2E /* CurrentRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = BB565EA32734F1FB00C93EAE /* CurrentRoot.m */; };
-		BBD23D5F258DA450003DCB40 /* Screenshots.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD23D5E258DA450003DCB40 /* Screenshots.m */; };
-		BBD23D77258DA4BC003DCB40 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD23D76258DA4BC003DCB40 /* SnapshotHelper.swift */; };
 		BBECF3AE2691330F00DEC937 /* libiSHLinux.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBECF3A22691314C00DEC937 /* libiSHLinux.a */; };
 		BBECF3B9269136FB00DEC937 /* liblinux.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBECF3B8269136E100DEC937 /* liblinux.a */; };
 		BBECF3BC26913F1600DEC937 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB792B541F96D90D00FFB7A4 /* AppDelegate.m */; };
@@ -227,13 +224,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = BB13F7D0200ACCA2003D1C4D;
 			remoteInfo = Ninja;
-		};
-		BB415921255EF9E300E0950C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB792B461F96D8E000FFB7A4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BB792B4F1F96D90D00FFB7A4;
-			remoteInfo = iSH;
 		};
 		BB4A922724ED940C002F5A96 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -511,9 +501,6 @@
 		BB38597B27BCEC78000A1082 /* freeiosterminal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freeiosterminal.png; sourceTree = "<group>"; };
 		BB38598227BCEC83000A1082 /* ishcolontildehash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ishcolontildehash.png; sourceTree = "<group>"; };
 		BB38598327BCEC83000A1082 /* is.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = is.png; sourceTree = "<group>"; };
-		BB41591C255EF9E300E0950C /* iSHUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSHUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB41591E255EF9E300E0950C /* UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITests.m; sourceTree = "<group>"; };
-		BB415920255EF9E300E0950C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB455E0F1FB37F6600AFB48B /* DelayedUITask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelayedUITask.h; sourceTree = "<group>"; };
 		BB455E101FB37F6600AFB48B /* DelayedUITask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DelayedUITask.m; sourceTree = "<group>"; };
 		BB4A539C1FAA490C00A72ACE /* term.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = term.js; sourceTree = "<group>"; };
@@ -553,9 +540,6 @@
 		BBC8298624EE5853009D042C /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metal.png; sourceTree = "<group>"; };
 		BBCC9D942365430800424C83 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		BBCC9D952365430800424C83 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		BBD23D5E258DA450003DCB40 /* Screenshots.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Screenshots.m; sourceTree = "<group>"; };
-		BBD23D76258DA4BC003DCB40 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
-		BBD23D95258DEF6B003DCB40 /* Screenshots.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Screenshots.xctestplan; sourceTree = "<group>"; };
 		BBECF3A22691314C00DEC937 /* libiSHLinux.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiSHLinux.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBECF3B8269136E100DEC937 /* liblinux.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblinux.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBECF3BA2691379100DEC937 /* StaticLibLinux.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StaticLibLinux.xcconfig; sourceTree = "<group>"; };
@@ -575,13 +559,6 @@
 			files = (
 				497F6D87254E62E100C82F46 /* libish.a in Frameworks */,
 				BBFB2C7E259026C200545EAB /* libish_emu.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BB415919255EF9E300E0950C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,18 +719,6 @@
 			path = platform;
 			sourceTree = "<group>";
 		};
-		BB41591D255EF9E300E0950C /* UITests */ = {
-			isa = PBXGroup;
-			children = (
-				BB41591E255EF9E300E0950C /* UITests.m */,
-				BBD23D5E258DA450003DCB40 /* Screenshots.m */,
-				BBD23D76258DA4BC003DCB40 /* SnapshotHelper.swift */,
-				BBD23D95258DEF6B003DCB40 /* Screenshots.xctestplan */,
-				BB415920255EF9E300E0950C /* Info.plist */,
-			);
-			path = UITests;
-			sourceTree = "<group>";
-		};
 		BB4A53931FAA393B00A72ACE /* most of the code */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,7 +766,6 @@
 				BB792B501F96D90D00FFB7A4 /* iSH.app */,
 				BB13F7DC200AD81D003D1C4D /* libish.a */,
 				BBFB2C5B2590257E00545EAB /* libish_emu.a */,
-				BB41591C255EF9E300E0950C /* iSHUITests.xctest */,
 				497F6D47254E605F00C82F46 /* ish */,
 				497F6CE4254E5E4C00C82F46 /* MakeXcodeAutoCompleteWork */,
 				BBEF191E26806364001225BD /* libiSHApp.a */,
@@ -848,7 +812,6 @@
 				BB792B621F96D90D00FFB7A4 /* main.m */,
 				BB0B848D2586A4B100208600 /* Configs */,
 				BB88F4A4215476BA00A341FD /* iSH.entitlements */,
-				BB41591D255EF9E300E0950C /* UITests */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -1127,24 +1090,6 @@
 			productReference = BB21A16F2689041500BD19B4 /* libfakefs.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		BB41591B255EF9E300E0950C /* iSHUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BB415925255EF9E300E0950C /* Build configuration list for PBXNativeTarget "iSHUITests" */;
-			buildPhases = (
-				BB415918255EF9E300E0950C /* Sources */,
-				BB415919255EF9E300E0950C /* Frameworks */,
-				BB41591A255EF9E300E0950C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BB415922255EF9E300E0950C /* PBXTargetDependency */,
-			);
-			name = iSHUITests;
-			productName = iSHUITests;
-			productReference = BB41591C255EF9E300E0950C /* iSHUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		BB792B4F1F96D90D00FFB7A4 /* iSH */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB792B661F96D90D00FFB7A4 /* Build configuration list for PBXNativeTarget "iSH" */;
@@ -1283,12 +1228,6 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
-					BB41591B255EF9E300E0950C = {
-						CreatedOnToolsVersion = 12.2;
-						LastSwiftMigration = 1220;
-						ProvisioningStyle = Automatic;
-						TestTargetID = BB792B4F1F96D90D00FFB7A4;
-					};
 					BB4A922324ED9402002F5A96 = {
 						CreatedOnToolsVersion = 11.5;
 						ProvisioningStyle = Automatic;
@@ -1327,7 +1266,6 @@
 				BBEF191D26806364001225BD /* libiSHApp */,
 				BBEF1964268066D1001225BD /* iSH+Linux */,
 				BBECF3A12691314C00DEC937 /* libiSHLinux */,
-				BB41591B255EF9E300E0950C /* iSHUITests */,
 				BB13F7CA200ACC31003D1C4D /* Meson */,
 				BB13F7D0200ACCA2003D1C4D /* Ninja */,
 				BB13F7DB200AD81D003D1C4D /* libish */,
@@ -1342,13 +1280,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BB41591A255EF9E300E0950C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BB792B4E1F96D90D00FFB7A4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1719,16 +1650,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BB415918255EF9E300E0950C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BB41591F255EF9E300E0950C /* UITests.m in Sources */,
-				BBD23D5F258DA450003DCB40 /* Screenshots.m in Sources */,
-				BBD23D77258DA4BC003DCB40 /* SnapshotHelper.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BBECF39E2691314C00DEC937 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1780,11 +1701,6 @@
 			isa = PBXTargetDependency;
 			target = BB13F7D0200ACCA2003D1C4D /* Ninja */;
 			targetProxy = BB21A1682689041500BD19B4 /* PBXContainerItemProxy */;
-		};
-		BB415922255EF9E300E0950C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BB792B4F1F96D90D00FFB7A4 /* iSH */;
-			targetProxy = BB415921255EF9E300E0950C /* PBXContainerItemProxy */;
 		};
 		BB4A922824ED940C002F5A96 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1926,43 +1842,6 @@
 			};
 			name = ReleaseLinux;
 		};
-		BB415923255EF9E300E0950C /* Debug-ApplePleaseFixFB19282108 */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB0B86D52587009D00208600 /* iOS.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = app/UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = iSH;
-			};
-			name = "Debug-ApplePleaseFixFB19282108";
-		};
-		BB415924255EF9E300E0950C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB0B86D52587009D00208600 /* iOS.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = app/UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = iSH;
-			};
-			name = Release;
-		};
 		BB4A922524ED9402002F5A96 /* Debug-ApplePleaseFixFB19282108 */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2031,25 +1910,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBEF192C26806546001225BD /* AppLib.xcconfig */;
 			buildSettings = {
-			};
-			name = DebugLinux;
-		};
-		BB7F620A2688EAB5003C0220 /* DebugLinux */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB0B86D52587009D00208600 /* iOS.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = app/UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = iSH;
 			};
 			name = DebugLinux;
 		};
@@ -2216,24 +2076,6 @@
 			};
 			name = ReleaseLinux;
 		};
-		BBEF19B026806D1F001225BD /* ReleaseLinux */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB0B86D52587009D00208600 /* iOS.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = app/UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = iSH;
-			};
-			name = ReleaseLinux;
-		};
 		BBEF19B126806D1F001225BD /* ReleaseLinux */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2363,17 +2205,6 @@
 				BB21A16C2689041500BD19B4 /* DebugLinux */,
 				BB21A16D2689041500BD19B4 /* Release */,
 				BB21A16E2689041500BD19B4 /* ReleaseLinux */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BB415925255EF9E300E0950C /* Build configuration list for PBXNativeTarget "iSHUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BB415923255EF9E300E0950C /* Debug-ApplePleaseFixFB19282108 */,
-				BB7F620A2688EAB5003C0220 /* DebugLinux */,
-				BB415924255EF9E300E0950C /* Release */,
-				BBEF19B026806D1F001225BD /* ReleaseLinux */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
