@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		497F6D5C254E609700C82F46 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BB7D93822087C2890008DA78 /* main.c */; };
-		497F6D87254E62E100C82F46 /* libish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13F7DC200AD81D003D1C4D /* libish.a */; };
 		63C3B15628E0915400930DA1 /* consola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C3B15328E0909B00930DA1 /* consola.ttf */; };
 		BB0F552E239F8A790032A2A1 /* Icons.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB0F552D239F8A790032A2A1 /* Icons.plist */; };
 		BB13F7EA200ADCED003D1C4D /* libish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13F7DC200AD81D003D1C4D /* libish.a */; };
@@ -110,19 +108,11 @@
 		BBEF1994268066D1001225BD /* term.js in Resources */ = {isa = PBXBuildFile; fileRef = BB4A539C1FAA490C00A72ACE /* term.js */; };
 		BBEF1995268066D1001225BD /* sprite64.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B880E2589662200208600 /* sprite64.png */; };
 		BBEF1996268066D1001225BD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1B9A4223A5E96900414052 /* icon.png */; };
-		BBFB2C7E259026C200545EAB /* libish_emu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFB2C5B2590257E00545EAB /* libish_emu.a */; };
 		BBFB2CEC2590296B00545EAB /* libish_emu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFB2C5B2590257E00545EAB /* libish_emu.a */; };
 		BBFB55662158644C00DFE6DE /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFB55652158644C00DFE6DE /* libresolv.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		497F6D5A254E609000C82F46 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB792B461F96D8E000FFB7A4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BB13F7DB200AD81D003D1C4D;
-			remoteInfo = libish;
-		};
 		BB13F7D4200ACCA8003D1C4D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BB792B461F96D8E000FFB7A4 /* Project object */;
@@ -203,15 +193,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		497F6D45254E605F00C82F46 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		BB88F4A32154760800A341FD /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,7 +364,6 @@
 		497F6CD1254E5CC800C82F46 /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
 		497F6CD2254E5CC800C82F46 /* sync.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sync.c; sourceTree = "<group>"; };
 		497F6CD3254E5CC800C82F46 /* bits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bits.h; sourceTree = "<group>"; };
-		497F6D47254E605F00C82F46 /* ish */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ish; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C3B15328E0909B00930DA1 /* consola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = consola.ttf; sourceTree = "<group>"; };
 		650B337222EA235C00B4C03E /* PasteboardDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasteboardDevice.h; sourceTree = "<group>"; };
 		650B337322EA235C00B4C03E /* PasteboardDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasteboardDevice.m; sourceTree = "<group>"; };
@@ -478,15 +458,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		497F6D44254E605F00C82F46 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				497F6D87254E62E100C82F46 /* libish.a in Frameworks */,
-				BBFB2C7E259026C200545EAB /* libish_emu.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BB792B4D1F96D90D00FFB7A4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -691,7 +662,6 @@
 				BB792B501F96D90D00FFB7A4 /* iSH.app */,
 				BB13F7DC200AD81D003D1C4D /* libish.a */,
 				BBFB2C5B2590257E00545EAB /* libish_emu.a */,
-				497F6D47254E605F00C82F46 /* ish */,
 				BBEF191E26806364001225BD /* libiSHApp.a */,
 				BBEF199C268066D1001225BD /* iSH.app */,
 				BB21A16F2689041500BD19B4 /* libfakefs.a */,
@@ -949,24 +919,6 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		497F6D46254E605F00C82F46 /* ish */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 497F6D4B254E605F00C82F46 /* Build configuration list for PBXNativeTarget "ish" */;
-			buildPhases = (
-				497F6D43254E605F00C82F46 /* Sources */,
-				497F6D44254E605F00C82F46 /* Frameworks */,
-				497F6D45254E605F00C82F46 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				497F6D5B254E609000C82F46 /* PBXTargetDependency */,
-			);
-			name = ish;
-			productName = ish;
-			productReference = 497F6D47254E605F00C82F46 /* ish */;
-			productType = "com.apple.product-type.tool";
-		};
 		BB13F7DB200AD81D003D1C4D /* libish */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB13F7E2200AD81E003D1C4D /* Build configuration list for PBXNativeTarget "libish" */;
@@ -1118,10 +1070,6 @@
 				CLASSPREFIX = "";
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
-					497F6D46254E605F00C82F46 = {
-						CreatedOnToolsVersion = 12.2;
-						ProvisioningStyle = Automatic;
-					};
 					BB13F7CA200ACC31003D1C4D = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -1179,7 +1127,6 @@
 				BBFB2C542590257E00545EAB /* libish_emu */,
 				BBECF3AF269136E100DEC937 /* liblinux */,
 				BB4A922324ED9402002F5A96 /* iSH pre */,
-				497F6D46254E605F00C82F46 /* ish */,
 			);
 		};
 /* End PBXProject section */
@@ -1449,14 +1396,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		497F6D43254E605F00C82F46 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				497F6D5C254E609700C82F46 /* main.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BB21A1722689084800BD19B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1501,11 +1440,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		497F6D5B254E609000C82F46 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BB13F7DB200AD81D003D1C4D /* libish */;
-			targetProxy = 497F6D5A254E609000C82F46 /* PBXContainerItemProxy */;
-		};
 		BB13F7D5200ACCA8003D1C4D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BB13F7CA200ACC31003D1C4D /* Meson */;
@@ -1564,28 +1498,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		497F6D4C254E605F00C82F46 /* Debug-ApplePleaseFixFB19282108 */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
-			};
-			name = "Debug-ApplePleaseFixFB19282108";
-		};
-		497F6D4D254E605F00C82F46 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
-			};
-			name = Release;
-		};
 		BB13F7CC200ACC31003D1C4D /* Debug-ApplePleaseFixFB19282108 */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1755,17 +1667,6 @@
 			};
 			name = DebugLinux;
 		};
-		BB7F62112688EAB5003C0220 /* DebugLinux */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
-			};
-			name = DebugLinux;
-		};
 		BBECF3A92691314C00DEC937 /* Debug-ApplePleaseFixFB19282108 */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBECF3BA2691379100DEC937 /* StaticLibLinux.xcconfig */;
@@ -1911,17 +1812,6 @@
 			};
 			name = ReleaseLinux;
 		};
-		BBEF19B726806D1F001225BD /* ReleaseLinux */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
-			};
-			name = ReleaseLinux;
-		};
 		BBFB2C592590257E00545EAB /* Debug-ApplePleaseFixFB19282108 */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBFB2CDA259028DC00545EAB /* StaticLib.xcconfig */;
@@ -1939,17 +1829,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		497F6D4B254E605F00C82F46 /* Build configuration list for PBXNativeTarget "ish" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				497F6D4C254E605F00C82F46 /* Debug-ApplePleaseFixFB19282108 */,
-				BB7F62112688EAB5003C0220 /* DebugLinux */,
-				497F6D4D254E605F00C82F46 /* Release */,
-				BBEF19B726806D1F001225BD /* ReleaseLinux */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		BB13F7CB200ACC31003D1C4D /* Build configuration list for PBXLegacyTarget "Meson" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
