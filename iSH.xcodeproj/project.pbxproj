@@ -63,7 +63,6 @@
 		BB3859A627BCEE6B000A1082 /* colontildehash.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4A922F24EDA55C002F5A96 /* colontildehash.png */; };
 		BB3859A727BCEE6B000A1082 /* uninspired.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0F552F239F8B360032A2A1 /* uninspired.png */; };
 		BB6DB261216435340047A611 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6DB260216435330047A611 /* libiconv.tbd */; };
-		BB792B5D1F96D90D00FFB7A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB792B5C1F96D90D00FFB7A4 /* Assets.xcassets */; };
 		BBA8E2C1236FF5EA00515F76 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA8E2C0236FF5EA00515F76 /* SystemConfiguration.framework */; };
 		BBAEE339249B58E80069EBB5 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAEE338249B58E80069EBB5 /* libbz2.tbd */; };
 		BBBF7B5C2415CDBB00EC4C14 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBBF7B5B2415CDBB00EC4C14 /* Settings.bundle */; };
@@ -347,7 +346,6 @@
 		BB792B541F96D90D00FFB7A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BB792B561F96D90D00FFB7A4 /* TerminalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TerminalViewController.h; sourceTree = "<group>"; };
 		BB792B571F96D90D00FFB7A4 /* TerminalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TerminalViewController.m; sourceTree = "<group>"; };
-		BB792B5C1F96D90D00FFB7A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB792B611F96D90D00FFB7A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB792B621F96D90D00FFB7A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BB7D93352087C2880008DA78 /* xX_main_Xx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xX_main_Xx.h; sourceTree = "<group>"; };
@@ -600,7 +598,6 @@
 				BB455E101FB37F6600AFB48B /* DelayedUITask.m */,
 				BB4A53991FAA40FD00A72ACE /* terminal */,
 				BBBF7B5B2415CDBB00EC4C14 /* Settings.bundle */,
-				BB792B5C1F96D90D00FFB7A4 /* Assets.xcassets */,
 				BB1B9A4123A5E92A00414052 /* Icons */,
 				BB792B611F96D90D00FFB7A4 /* Info.plist */,
 				BB792B621F96D90D00FFB7A4 /* main.m */,
@@ -981,7 +978,6 @@
 				BB38599B27BCEE6B000A1082 /* rgb.png in Resources */,
 				BB38599927BCEE6B000A1082 /* dollarblock1.png in Resources */,
 				BB38599C27BCEE6B000A1082 /* sprite64.png in Resources */,
-				BB792B5D1F96D90D00FFB7A4 /* Assets.xcassets in Resources */,
 				BB3859A427BCEE6B000A1082 /* ishcolontildehash.png in Resources */,
 				BB38599D27BCEE6B000A1082 /* icon.png in Resources */,
 				BBBF7B5C2415CDBB00EC4C14 /* Settings.bundle in Resources */,
