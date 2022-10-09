@@ -21,10 +21,6 @@
 #include "fs/devices.h"
 #include "fs/path.h"
 
-//#if ISH_LINUX
-//#import "LinuxInterop.h"
-//#endif
-
 @interface AppDelegate ()
 
 @property BOOL exiting;
@@ -34,7 +30,6 @@
 
 @end
 
-#if !ISH_LINUX
 static void ios_handle_exit(struct task *task, int code) {
     // we are interested in init and in children of init
     // this is called with pids_lock as an implementation side effect, please do not cite as an example of good API design
@@ -57,11 +52,6 @@ static void ios_handle_die(const char *msg) {
     NSString *newName = [NSString stringWithFormat:@"%s died: %s", name, msg];
     pthread_setname_np(newName.UTF8String);
 }
-#elif ISH_LINUX
-void ReportPanic(const char *message) {
-    [NSNotificationCenter.defaultCenter postNotificationName:KernelPanicNotification object:nil userInfo:@{@"message":@(message)}];
-}
-#endif
 
 static int bootError;
 static NSString *const kSkipStartupMessage = @"Skip Startup Message";
@@ -83,9 +73,6 @@ static NSURL *RootsDir2() {
 @implementation AppDelegate
 
 - (int)boot {
-#if !ISH_LINUX
-//    NSURL *root = [Roots.instance rootUrl:Roots.instance.defaultRoot];
-    
     NSURL *root = [RootsDir2() URLByAppendingPathComponent:[NSUserDefaults.standardUserDefaults stringForKey:@"Default Root"]];
     
     NSLog(@"root: %@", root);
@@ -178,34 +165,11 @@ static NSURL *RootsDir2() {
     if (err < 0)
         return err;
     task_start(current);
-
-#else
-    // On first launch, this will trigger the import of the default root. Make sure to do this before entering the kernel, because it needs to run something on the main thread, and that would deadlock.
-//    [Roots instance];
-//    NSArray<NSString *> *args = @[];
-//    actuate_kernel([args componentsJoinedByString:@" "].UTF8String);
-#endif
     
     return 0;
 }
 
-#if ISH_LINUX
-//const char *DefaultRootPath() {
-//    return [Roots.instance rootUrl:Roots.instance.defaultRoot].fileSystemRepresentation;
-//}
-//
-//void SyncHostname(void) {
-//    async_do_in_workqueue(^{
-//        char hostname[256];
-//        if (gethostname(hostname, sizeof(hostname)) < 0)
-//            return;
-//        linux_sethostname(hostname);
-//    });
-//}
-#endif
-
 - (void)configureDns {
-#if !ISH_LINUX
     struct __res_state res;
     if (EXIT_SUCCESS != res_ninit(&res)) {
         exit(2);
@@ -237,7 +201,6 @@ static NSURL *RootsDir2() {
         fd->ops->write(fd, resolvConf.UTF8String, [resolvConf lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
         fd_close(fd);
     }
-#endif
 }
 
 + (int)bootError {
@@ -268,14 +231,6 @@ static NSURL *RootsDir2() {
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey,id> *)launchOptions {
 
     bootError = [self boot];
-
-#if ISH_LINUX
-//    [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:UIApplication.sharedApplication queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-//        SyncHostname();
-//    }];
-//    SyncHostname();
-#endif
-
     return YES;
 }
 
@@ -291,7 +246,6 @@ void NetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"FASTLANE_SNAPSHOT"])
         [UIView setAnimationsEnabled:NO];
 
-#if !ISH_LINUX
     self.ishVersion = [NSString stringWithFormat:@"iSH %@ (%@)",
                          [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
                          [NSBundle.mainBundle objectForInfoDictionaryKey:(NSString *) kCFBundleVersionKey]];
@@ -301,7 +255,6 @@ void NetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     self.unameHostname = [NSUserDefaults.standardUserDefaults stringForKey:@"hostnameOverride"];
     extern const char *uname_hostname_override;
     uname_hostname_override = self.unameHostname.UTF8String;
-#endif
     
     struct sockaddr_in6 address = {
         .sin6_len = sizeof(address),
@@ -344,8 +297,5 @@ void NetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
 @end
 
-#if !ISH_LINUX
 NSString *const ProcessExitedNotification = @"ProcessExitedNotification";
-#else
-//NSString *const KernelPanicNotification = @"KernelPanicNotification";
-#endif
+

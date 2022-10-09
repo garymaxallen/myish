@@ -9,14 +9,14 @@
 #include "kernel/calls.h"
 #include "fs/path.h"
 
-#ifdef ISH_LINUX
-#import "LinuxInterop.h"
-#endif
+//#ifdef ISH_LINUX
+//#import "LinuxInterop.h"
+//#endif
 
 int fs_ish_version;
 int fs_ish_apk_version;
 
-#if !ISH_LINUX
+//#if !ISH_LINUX
 static ssize_t read_file(const char *path, char *buf, size_t size) {
     struct fd *fd = generic_open(path, O_RDONLY_, 0);
     if (IS_ERR(fd))
@@ -39,11 +39,11 @@ static ssize_t write_file(const char *path, const char *buf, size_t size) {
 static int remove_directory(const char *path) {
     return generic_rmdirat(AT_PWD, path);
 }
-#else
-#define read_file linux_read_file
-#define write_file linux_write_file
-#define remove_directory linux_remove_directory
-#endif
+//#else
+//#define read_file linux_read_file
+//#define write_file linux_write_file
+//#define remove_directory linux_remove_directory
+//#endif
 
 void FsInitialize() {
     // /ish/version is the last ish version that opened this root. Used to migrate the filesystem.

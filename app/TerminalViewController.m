@@ -170,7 +170,7 @@
     return 0;
 }
 
-#if !ISH_LINUX
+//#if !ISH_LINUX
 - (void)processExited:(NSNotification *)notif {
     int pid = [notif.userInfo[@"pid"] intValue];
     if (pid != self.sessionPid)
@@ -192,15 +192,15 @@
     current = NULL; // it's been freed
     [self startNewSession];
 }
-#endif
+//#endif
 
-#if ISH_LINUX
-- (void)kernelPanicked:(NSNotification *)notif {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"panik" message:notif.userInfo[@"message"] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"k" style:UIAlertActionStyleDefault handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-#endif
+//#if ISH_LINUX
+//- (void)kernelPanicked:(NSNotification *)notif {
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"panik" message:notif.userInfo[@"message"] preferredStyle:UIAlertControllerStyleAlert];
+//    [alert addAction:[UIAlertAction actionWithTitle:@"k" style:UIAlertActionStyleDefault handler:nil]];
+//    [self presentViewController:alert animated:YES completion:nil];
+//}
+//#endif
 
 - (void)showMessage:(NSString *)message subtitle:(NSString *)subtitle {
     dispatch_async(dispatch_get_main_queue(), ^{

@@ -7,7 +7,6 @@
 
 #import "ScrollbarView.h"
 #import "TerminalView.h"
-//#import "UIApplication+OpenURL.h"
 
 struct rowcol {
     int row;
