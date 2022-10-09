@@ -251,11 +251,19 @@ static NSString *const HANDLERS[] = {@"syncFocus", @"focus", @"newScrollHeight",
 - (void)insertText:(NSString *)text {
     self.markedText = nil;
 
-    if (self.controlKey.highlighted)
-        self.controlKey.selected = YES;
-    if (self.controlKey.selected) {
-        if (!self.controlKey.highlighted)
-            self.controlKey.selected = NO;
+//    if (self.controlKey.highlighted)
+//        self.controlKey.selected = YES;
+//    if (self.controlKey.selected) {
+//        if (!self.controlKey.highlighted)
+//            self.controlKey.selected = NO;
+//        if (text.length == 1)
+//            return [self insertControlChar:[text characterAtIndex:0]];
+//    }
+    if (self.isControlHighlighted)
+        self.isControlSelected = YES;
+    if (self.isControlSelected) {
+        if (!self.isControlHighlighted)
+            self.isControlSelected = NO;
         if (text.length == 1)
             return [self insertControlChar:[text characterAtIndex:0]];
     }

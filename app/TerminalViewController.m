@@ -48,7 +48,7 @@
     [self.controlKey setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.controlKey setBackgroundColor: [UIColor whiteColor]];
     [self.controlKey addTarget: self action: @selector(pressControl:) forControlEvents: UIControlEventTouchUpInside];
-    self.termView.controlKey = self.controlKey;
+//    self.termView.controlKey = self.controlKey;
     
     UIButton *leftButton = [UIButton buttonWithType: UIButtonTypeSystem];
     [leftButton setFrame: CGRectMake(120.0, 0.0, 40.0, 40.0)];
@@ -80,14 +80,14 @@
     
     UIButton *pasteButton = [UIButton buttonWithType: UIButtonTypeSystem];
     [pasteButton setFrame: CGRectMake(280.0, 0.0, 40.0, 40.0)];
-    [pasteButton setTitle: @"🅿️" forState: UIControlStateNormal];
+    [pasteButton setTitle: @"P" forState: UIControlStateNormal];
     [pasteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [pasteButton setBackgroundColor: [UIColor whiteColor]];
     [pasteButton addTarget: self action: @selector(pressPaste) forControlEvents: UIControlEventTouchUpInside];
     
     UIButton *hideKeyboardButton = [UIButton buttonWithType: UIButtonTypeSystem];
     [hideKeyboardButton setFrame: CGRectMake(320.0, 0.0, 40.0, 40.0)];
-    [hideKeyboardButton setTitle: @"⌨️" forState: UIControlStateNormal];
+    [hideKeyboardButton setTitle: @"⌨" forState: UIControlStateNormal];
     [hideKeyboardButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [hideKeyboardButton setBackgroundColor: [UIColor whiteColor]];
     [hideKeyboardButton addTarget: self action: @selector(hideKeyboard) forControlEvents: UIControlEventTouchUpInside];
@@ -170,7 +170,6 @@
     return 0;
 }
 
-//#if !ISH_LINUX
 - (void)processExited:(NSNotification *)notif {
     int pid = [notif.userInfo[@"pid"] intValue];
     if (pid != self.sessionPid)
@@ -192,15 +191,6 @@
     current = NULL; // it's been freed
     [self startNewSession];
 }
-//#endif
-
-//#if ISH_LINUX
-//- (void)kernelPanicked:(NSNotification *)notif {
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"panik" message:notif.userInfo[@"message"] preferredStyle:UIAlertControllerStyleAlert];
-//    [alert addAction:[UIAlertAction actionWithTitle:@"k" style:UIAlertActionStyleDefault handler:nil]];
-//    [self presentViewController:alert animated:YES completion:nil];
-//}
-//#endif
 
 - (void)showMessage:(NSString *)message subtitle:(NSString *)subtitle {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -213,9 +203,6 @@
 }
 
 #pragma mark Bar
-
-- (void)showAbout:(id)sender {
-}
 
 - (void)hideKeyboard{
     [self.termView resignFirstResponder];
@@ -230,6 +217,8 @@
 
 - (void)pressControl:(id)sender {
     self.controlKey.selected = !self.controlKey.selected;
+    self.termView.isControlSelected = !self.termView.isControlSelected;
+    self.termView.isControlHighlighted = !self.termView.isControlHighlighted;
 }
 
 - (void)pressLeft{

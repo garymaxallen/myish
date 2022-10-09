@@ -26,7 +26,9 @@ enum OverrideAppearance {
 
 //@property UIInputView *inputAccessoryView;
 @property UIView *inputAccessoryView;
-@property UIButton *controlKey;
+//@property UIButton *controlKey;
+@property BOOL isControlSelected;
+@property BOOL isControlHighlighted;
 
 @property (nonatomic) Terminal *terminal;
 
