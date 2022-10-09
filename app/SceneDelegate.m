@@ -6,16 +6,11 @@
 //
 
 #import "SceneDelegate.h"
-
-TerminalViewController *currentTerminalViewController = NULL;
+#import "TerminalViewController.h"
 
 @interface SceneDelegate ()
 
-@property NSString *terminalUUID;
-
 @end
-
-static NSString *const TerminalUUID = @"TerminalUUID";
 
 @implementation SceneDelegate
 
@@ -24,44 +19,11 @@ static NSString *const TerminalUUID = @"TerminalUUID";
     self.window.windowScene = (UIWindowScene *)scene;
 
     TerminalViewController *vc = [[TerminalViewController alloc] init];
-    vc.sceneSession = session;
-    if (session.stateRestorationActivity == nil) {
-        [vc startNewSession];
-    } else {
-        self.terminalUUID = session.stateRestorationActivity.userInfo[TerminalUUID];
-        [vc reconnectSessionFromTerminalUUID:
-         [[NSUUID alloc] initWithUUIDString:self.terminalUUID]];
-    }
     self.window.rootViewController = vc;
 
-    self.window.backgroundColor = [UIColor blackColor];
+//    self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++   willConnectToSession");
-}
-
-- (NSUserActivity *)stateRestorationActivityForScene:(UIScene *)scene {
-    NSUserActivity *activity = [[NSUserActivity alloc] initWithActivityType:@"app.ish.scene"];
-    TerminalViewController *vc = (TerminalViewController *) self.window.rootViewController;
-    if ([vc isKindOfClass:TerminalViewController.class]) {
-        self.terminalUUID = vc.sessionTerminalUUID.UUIDString;
-        if (self.terminalUUID != nil) {
-            [activity addUserInfoEntriesFromDictionary:@{TerminalUUID: self.terminalUUID}];
-        }
-    }
-    return activity;
-}
-
-- (void)sceneDidBecomeActive:(UIScene *)scene {
-    TerminalViewController *terminalViewController = (TerminalViewController *) self.window.rootViewController;;
-    currentTerminalViewController = terminalViewController;
-}
-
-- (void)sceneWillResignActive:(UIScene *)scene {
-    TerminalViewController *terminalViewController = (TerminalViewController *) self.window.rootViewController;
-    
-    if (currentTerminalViewController == terminalViewController) {
-        currentTerminalViewController = NULL;
-    }
 }
 
 @end

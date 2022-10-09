@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #include <sys/stat.h>
-#include "SceneDelegate.h"
+//#include "SceneDelegate.h"
 #include "iOSFS.h"
 #include "kernel/fs.h"
 #include "kernel/errno.h"
@@ -50,42 +50,42 @@ const NSFileCoordinatorWritingOptions NSFileCoordinatorWritingForCreating = NSFi
     unlock(&_lock);
 }
 
-- (int)askForURL:(NSURL **)url {
-    TerminalViewController *terminalViewController = currentTerminalViewController;
-    if (!terminalViewController)
-        return _ENODEV;
-
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        UIDocumentPickerViewController *picker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[ @"public.folder" ] inMode:UIDocumentPickerModeOpen];
-        picker.delegate = self;
-        if (@available(iOS 13, *)) {
-        } else {
-            picker.allowsMultipleSelection = YES;
-        }
-        picker.presentationController.delegate = self;
-        [terminalViewController presentViewController:picker animated:true completion:nil];
-    });
-
-    lock(&_lock);
-    while (_urls == nil) {
-        int err = wait_for(&_cond, &_lock, NULL);
-        if (err < 0) {
-            unlock(&_lock);
-            return err;
-        }
-    }
-    NSArray<NSURL *> *urls = _urls;
-    _urls = nil;
-    unlock(&_lock);
-    
-    if (@available(iOS 13, *)) {
-        assert(urls.count <= 1);
-    }
-    if (urls.count == 0)
-        return _ECANCELED;
-    *url = urls[0];
-    return 0;
-}
+//- (int)askForURL:(NSURL **)url {
+//    TerminalViewController *terminalViewController = currentTerminalViewController;
+//    if (!terminalViewController)
+//        return _ENODEV;
+//
+//    dispatch_async(dispatch_get_main_queue(), ^(void) {
+//        UIDocumentPickerViewController *picker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[ @"public.folder" ] inMode:UIDocumentPickerModeOpen];
+//        picker.delegate = self;
+//        if (@available(iOS 13, *)) {
+//        } else {
+//            picker.allowsMultipleSelection = YES;
+//        }
+//        picker.presentationController.delegate = self;
+//        [terminalViewController presentViewController:picker animated:true completion:nil];
+//    });
+//
+//    lock(&_lock);
+//    while (_urls == nil) {
+//        int err = wait_for(&_cond, &_lock, NULL);
+//        if (err < 0) {
+//            unlock(&_lock);
+//            return err;
+//        }
+//    }
+//    NSArray<NSURL *> *urls = _urls;
+//    _urls = nil;
+//    unlock(&_lock);
+//
+//    if (@available(iOS 13, *)) {
+//        assert(urls.count <= 1);
+//    }
+//    if (urls.count == 0)
+//        return _ECANCELED;
+//    *url = urls[0];
+//    return 0;
+//}
 
 - (void)dealloc {
     cond_destroy(&_cond);
@@ -123,51 +123,51 @@ void iosfs_init() {
     sync_bookmarks();
 }
 
-static int iosfs_mount(struct mount *mount) {
-    NSURL *url = nil;
-    if (mount_from_bookmarks) {
-        NSString *bookmarkName = [NSString stringWithCString:mount->source encoding:BOOKMARK_PATH_ENCODING];
-        url = [NSURL URLByResolvingBookmarkData:ios_mount_bookmarks[bookmarkName]
-                                        options:0
-                                  relativeToURL:nil
-                            bookmarkDataIsStale:NULL
-                                          error:nil];
-        if (url != nil && ![url startAccessingSecurityScopedResource]) {
-            return _EPERM;
-        }
-    }
-
-    if (url == nil) {
-        DirectoryPicker *picker = [DirectoryPicker new];
-        int err = [picker askForURL:&url];
-        if (err)
-            return err;
-        if (![url startAccessingSecurityScopedResource])
-            return _EPERM;
-    }
-
-    // Overwrite url & base path
-    mount->data = (void *) CFBridgingRetain(url);
-    free((void *) mount->source);
-    mount->source = strdup([[url path] UTF8String]);
-
-    if (mount_param_flag(mount->info, "unsafe")) {
-        mount->fs = &iosfs_unsafe;
-    }
-
-    if (!mount_from_bookmarks) {
-        NSData *bookmark = [url bookmarkDataWithOptions:0 includingResourceValuesForKeys:nil relativeToURL:nil error:nil];
-        NSString *path = [NSString stringWithCString:mount->point encoding:BOOKMARK_PATH_ENCODING];
-        if (bookmark != nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                ios_mount_bookmarks[path] = bookmark;
-                sync_bookmarks();
-            });
-        }
-    }
-
-    return realfs.mount(mount);
-}
+//static int iosfs_mount(struct mount *mount) {
+//    NSURL *url = nil;
+//    if (mount_from_bookmarks) {
+//        NSString *bookmarkName = [NSString stringWithCString:mount->source encoding:BOOKMARK_PATH_ENCODING];
+//        url = [NSURL URLByResolvingBookmarkData:ios_mount_bookmarks[bookmarkName]
+//                                        options:0
+//                                  relativeToURL:nil
+//                            bookmarkDataIsStale:NULL
+//                                          error:nil];
+//        if (url != nil && ![url startAccessingSecurityScopedResource]) {
+//            return _EPERM;
+//        }
+//    }
+//
+//    if (url == nil) {
+//        DirectoryPicker *picker = [DirectoryPicker new];
+//        int err = [picker askForURL:&url];
+//        if (err)
+//            return err;
+//        if (![url startAccessingSecurityScopedResource])
+//            return _EPERM;
+//    }
+//
+//    // Overwrite url & base path
+//    mount->data = (void *) CFBridgingRetain(url);
+//    free((void *) mount->source);
+//    mount->source = strdup([[url path] UTF8String]);
+//
+//    if (mount_param_flag(mount->info, "unsafe")) {
+//        mount->fs = &iosfs_unsafe;
+//    }
+//
+//    if (!mount_from_bookmarks) {
+//        NSData *bookmark = [url bookmarkDataWithOptions:0 includingResourceValuesForKeys:nil relativeToURL:nil error:nil];
+//        NSString *path = [NSString stringWithCString:mount->point encoding:BOOKMARK_PATH_ENCODING];
+//        if (bookmark != nil) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                ios_mount_bookmarks[path] = bookmark;
+//                sync_bookmarks();
+//            });
+//        }
+//    }
+//
+//    return realfs.mount(mount);
+//}
 
 static int iosfs_umount(struct mount *mount) {
     NSString *path = [NSString stringWithCString:mount->point encoding:BOOKMARK_PATH_ENCODING];
@@ -459,7 +459,7 @@ static int iosfs_flock(struct fd *fd, int operation) {
 
 const struct fs_ops iosfs = {
     .name = "ios", .magic = 0x694f5320,
-    .mount = iosfs_mount,
+//    .mount = iosfs_mount,
     .umount = iosfs_umount,
     .statfs = realfs_statfs,
 
@@ -486,7 +486,7 @@ const struct fs_ops iosfs = {
 
 const struct fs_ops iosfs_unsafe = {
     .name = "ios-unsafe", .magic = 0x694f5321,
-    .mount = iosfs_mount,
+//    .mount = iosfs_mount,
     .umount = iosfs_umount,
     .statfs = realfs_statfs,
 
