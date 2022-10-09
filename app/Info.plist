@@ -50,7 +50,7 @@
 					<key>UISceneConfigurationName</key>
 					<string>Main App</string>
 					<key>UISceneDelegateClassName</key>
-					<string>SceneDelegate</string>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 				</dict>
 			</array>
 		</dict>
