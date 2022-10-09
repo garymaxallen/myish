@@ -22,7 +22,7 @@ static NSString *const TerminalUUID = @"TerminalUUID";
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.windowScene = (UIWindowScene *)scene;
-    
+
     TerminalViewController *vc = [[TerminalViewController alloc] init];
     vc.sceneSession = session;
     if (session.stateRestorationActivity == nil) {
@@ -33,7 +33,7 @@ static NSString *const TerminalUUID = @"TerminalUUID";
          [[NSUUID alloc] initWithUUIDString:self.terminalUUID]];
     }
     self.window.rootViewController = vc;
-    
+
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++   willConnectToSession");
