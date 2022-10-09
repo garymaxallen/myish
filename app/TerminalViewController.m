@@ -48,7 +48,6 @@
     [self.controlKey setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.controlKey setBackgroundColor: [UIColor whiteColor]];
     [self.controlKey addTarget: self action: @selector(pressControl:) forControlEvents: UIControlEventTouchUpInside];
-//    self.termView.controlKey = self.controlKey;
     
     UIButton *leftButton = [UIButton buttonWithType: UIButtonTypeSystem];
     [leftButton setFrame: CGRectMake(120.0, 0.0, 40.0, 40.0)];
@@ -244,13 +243,13 @@
     }
 }
 
-- (void)switchTerminal:(UIKeyCommand *)sender {
-    unsigned i = (unsigned) sender.input.integerValue;
-    if (i == 7)
-        self.terminal = self.sessionTerminal;
-    else
-        self.terminal = [Terminal terminalWithType:TTY_CONSOLE_MAJOR number:i];
-}
+//- (void)switchTerminal:(UIKeyCommand *)sender {
+//    unsigned i = (unsigned) sender.input.integerValue;
+//    if (i == 7)
+//        self.terminal = self.sessionTerminal;
+//    else
+//        self.terminal = [Terminal terminalWithType:TTY_CONSOLE_MAJOR number:i];
+//}
 
 - (void)setTerminal:(Terminal *)terminal {
     _terminal = terminal;

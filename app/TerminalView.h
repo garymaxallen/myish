@@ -24,9 +24,7 @@ enum OverrideAppearance {
 
 @property (nonatomic) UIKeyboardAppearance keyboardAppearance;
 
-//@property UIInputView *inputAccessoryView;
 @property UIView *inputAccessoryView;
-//@property UIButton *controlKey;
 @property BOOL isControlSelected;
 @property BOOL isControlHighlighted;
 
