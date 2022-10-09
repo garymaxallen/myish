@@ -9,15 +9,15 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-- (void)exitApp;
-
-+ (int)bootError;
-
-+ (void)maybePresentStartupMessageOnViewController:(UIViewController *)vc;
+//@property (strong, nonatomic) UIWindow *window;
+//- (void)exitApp;
+//
+//+ (int)bootError;
+//
+//+ (void)maybePresentStartupMessageOnViewController:(UIViewController *)vc;
 
 @end
 
-extern NSString *const ProcessExitedNotification;
+//extern NSString *const ProcessExitedNotification;
 
 

@@ -7,15 +7,18 @@
 
 #import "TerminalViewController.h"
 #import "TerminalView.h"
+#import "Terminal.h"
 #include "kernel/init.h"
 #include "kernel/calls.h"
 #include "fs/devices.h"
 
 @interface TerminalViewController ()
 
-@property TerminalView *termView;
+@property TerminalView *terminalView;
 @property UIButton *controlKey;
 @property int sessionPid;
+
+@property (nonatomic) Terminal *terminal;
 @property (nonatomic) Terminal *sessionTerminal;
 
 @end
@@ -103,32 +106,12 @@
     [kbView addSubview:pasteButton];
     [kbView addSubview:hideKeyboardButton];
 
-    self.termView = [[TerminalView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.termView.inputAccessoryView = kbView;
-    self.termView.canBecomeFirstResponder = true;
-    self.terminal = self.terminal;
-    
-    [self.view addSubview: self.termView];
+    self.terminalView = [[TerminalView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.terminalView.inputAccessoryView = kbView;
+    self.terminalView.canBecomeFirstResponder = true;
+    [self.view addSubview: self.terminalView];
     
     [self startSession];
-}
-
-- (void)startNewSession {
-    int err = [self startSession];
-    if (err < 0) {
-        [self showMessage:@"could not start session"
-                 subtitle:[NSString stringWithFormat:@"error code %d", err]];
-    }
-}
-
-- (void)reconnectSessionFromTerminalUUID:(NSUUID *)uuid {
-    self.sessionTerminal = [Terminal terminalWithUUID:uuid];
-    if (self.sessionTerminal == nil)
-        [self startNewSession];
-}
-
-- (NSUUID *)sessionTerminalUUID {
-    return self.terminal.uuid;
 }
 
 - (int)startSession {
@@ -171,85 +154,91 @@
     return 0;
 }
 
-- (void)processExited:(NSNotification *)notif {
-    int pid = [notif.userInfo[@"pid"] intValue];
-    if (pid != self.sessionPid)
-        return;
-    
-    [self.sessionTerminal destroy];
-    current = NULL; // it's been freed
-    [self startNewSession];
-}
-
-- (void)showMessage:(NSString *)message subtitle:(NSString *)subtitle {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:message message:subtitle preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"k"
-                                                  style:UIAlertActionStyleDefault
-                                                handler:nil]];
-        [self presentViewController:alert animated:YES completion:nil];
-    });
-}
-
 #pragma mark Bar
 
 - (void)hideKeyboard{
-    [self.termView resignFirstResponder];
+    [self.terminalView resignFirstResponder];
 }
 
 - (void)pressEscape:(id)sender {
-    [self.termView insertText:@"\x1b"];
+    [self.terminalView insertText:@"\x1b"];
 }
 - (void)pressTab{
-    [self.termView insertText:@"\t"];
+    [self.terminalView insertText:@"\t"];
 }
 
 - (void)pressControl:(id)sender {
     self.controlKey.selected = !self.controlKey.selected;
-    self.termView.isControlSelected = !self.termView.isControlSelected;
-    self.termView.isControlHighlighted = !self.termView.isControlHighlighted;
+    self.terminalView.isControlSelected = !self.terminalView.isControlSelected;
+    self.terminalView.isControlHighlighted = !self.terminalView.isControlHighlighted;
 }
 
 - (void)pressLeft{
-    [self.termView insertText:[self.terminal arrow:'D']];
+    [self.terminalView insertText:[self.terminal arrow:'D']];
 }
 
 - (void)pressRight{
-    [self.termView insertText:[self.terminal arrow:'C']];
+    [self.terminalView insertText:[self.terminal arrow:'C']];
 }
 
 - (void)pressUp{
-    [self.termView insertText:[self.terminal arrow:'A']];
+    [self.terminalView insertText:[self.terminal arrow:'A']];
 }
 
 - (void)pressDown{
-    [self.termView insertText:[self.terminal arrow:'B']];
+    [self.terminalView insertText:[self.terminal arrow:'B']];
 }
 
 - (void)pressPaste{
     NSString *string = UIPasteboard.generalPasteboard.string;
     if (string) {
-        [self.termView insertText:string];
+        [self.terminalView insertText:string];
     }
 }
 
-//- (void)switchTerminal:(UIKeyCommand *)sender {
-//    unsigned i = (unsigned) sender.input.integerValue;
-//    if (i == 7)
-//        self.terminal = self.sessionTerminal;
-//    else
-//        self.terminal = [Terminal terminalWithType:TTY_CONSOLE_MAJOR number:i];
-//}
-
 - (void)setTerminal:(Terminal *)terminal {
+//    NSString *sourceString = [[NSThread callStackSymbols] objectAtIndex:1];
+//    NSCharacterSet *separatorSet = [NSCharacterSet characterSetWithCharactersInString:@" -[]+?.,"];
+//    NSMutableArray *array = [NSMutableArray arrayWithArray:[sourceString  componentsSeparatedByCharactersInSet:separatorSet]];
+//    [array removeObject:@""];
+//    NSLog(@"Stack = %@", [array objectAtIndex:0]);
+//    NSLog(@"Framework = %@", [array objectAtIndex:1]);
+//    NSLog(@"Memory address = %@", [array objectAtIndex:2]);
+//    NSLog(@"Class caller = %@", [array objectAtIndex:3]);
+//    NSLog(@"Function caller = %@", [array objectAtIndex:4]);
+
+    
+    
     _terminal = terminal;
-    self.termView.terminal = self.terminal;
+    self.terminalView.terminal = self.terminal;
 }
 
 - (void)setSessionTerminal:(Terminal *)sessionTerminal {
+//    NSString *sourceString = [[NSThread callStackSymbols] objectAtIndex:1];
+//    NSCharacterSet *separatorSet = [NSCharacterSet characterSetWithCharactersInString:@" -[]+?.,"];
+//    NSMutableArray *array = [NSMutableArray arrayWithArray:[sourceString  componentsSeparatedByCharactersInSet:separatorSet]];
+//    [array removeObject:@""];
+//    NSLog(@"Stack = %@", [array objectAtIndex:0]);
+//    NSLog(@"Framework = %@", [array objectAtIndex:1]);
+//    NSLog(@"Memory address = %@", [array objectAtIndex:2]);
+//    NSLog(@"Class caller = %@", [array objectAtIndex:3]);
+//    NSLog(@"Function caller = %@", [array objectAtIndex:4]);
+    
+    
     if (_terminal == _sessionTerminal)
         self.terminal = sessionTerminal;
     _sessionTerminal = sessionTerminal;
 }
+
+//- (void)setTerminal:(Terminal *)terminal {
+//    self.terminal = terminal;
+//    self.terminalView.terminal = self.terminal;
+//}
+//
+//- (void)setSessionTerminal:(Terminal *)sessionTerminal {
+//    if (self.terminal == self.sessionTerminal)
+//        self.terminal = sessionTerminal;
+//    self.sessionTerminal = sessionTerminal;
+//}
 
 @end
