@@ -20,6 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-static Terminal *myutility_terminal;
+//static Terminal *myutility_terminal;
 
 NS_ASSUME_NONNULL_END

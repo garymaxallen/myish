@@ -176,12 +176,12 @@ static NSURL *RootsDir2() {
     if (err < 0)
         return err;
     struct tty *tty;
-    Terminal *xxterminal = [Terminal createPseudoTerminal:&tty];
-    if (xxterminal == nil) {
+    Terminal *terminal = [Terminal createPseudoTerminal:&tty];
+    if (terminal == nil) {
         NSAssert(IS_ERR(tty), @"tty should be error");
         return (int) PTR_ERR(tty);
     }
-    myutility_terminal = xxterminal;
+    myutility_terminal = terminal;
     NSString *stdioFile = [NSString stringWithFormat:@"/dev/pts/%d", tty->num];
     err = create_stdio(stdioFile.fileSystemRepresentation, TTY_PSEUDO_SLAVE_MAJOR, tty->num);
     if (err < 0)

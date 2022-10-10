@@ -32,8 +32,6 @@
 
 @property (nonatomic) Terminal *terminal;
 
-@property Terminal *xxterminal;
-
 @end
 
 @implementation TerminalViewController
@@ -44,10 +42,9 @@
     [self setKeyboard];
     
     [MyUtility boot];
-    [self startSession];
-    self.terminalView.terminal = self.xxterminal;
+    [TerminalViewController startSession];
 //    [MyUtility startSession];
-//    self.terminalView.terminal = myutility_terminal;
+    self.terminalView.terminal = myutility_terminal;
 }
 
 - (void)setKeyboard {
@@ -132,7 +129,7 @@
     [self.view addSubview: self.terminalView];
 }
 
-- (int)startSession {
++ (int)startSession {
     NSArray<NSString *> *command = [NSArray<NSString *> new];
     NSMutableArray<NSString *> *command1 = [NSMutableArray<NSString *> new];
     command1[0] = @"/bin/login";
@@ -144,13 +141,12 @@
     if (err < 0)
         return err;
     struct tty *tty;
-//    Terminal *xxterminal = [Terminal createPseudoTerminal:&tty];
-    self.xxterminal = [Terminal createPseudoTerminal:&tty];
-    if (self.xxterminal == nil) {
+    Terminal *terminal = [Terminal createPseudoTerminal:&tty];
+    if (terminal == nil) {
         NSAssert(IS_ERR(tty), @"tty should be error");
         return (int) PTR_ERR(tty);
     }
-//    self.terminalView.terminal = self.xxterminal;
+    myutility_terminal = terminal;
     NSString *stdioFile = [NSString stringWithFormat:@"/dev/pts/%d", tty->num];
     err = create_stdio(stdioFile.fileSystemRepresentation, TTY_PSEUDO_SLAVE_MAJOR, tty->num);
     if (err < 0)
