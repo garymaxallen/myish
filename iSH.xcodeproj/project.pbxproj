@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		63AA5A6528F2FC8D002839FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA5A6428F2FC8D002839FF /* AppDelegate.swift */; };
 		63AA5A6A28F2FEFB002839FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA5A6928F2FEFB002839FF /* SceneDelegate.swift */; };
+		63AA5A6F28F410AB002839FF /* MyUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AA5A6E28F410AB002839FF /* MyUtility.m */; };
+		63AA5A7328F438EC002839FF /* MyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA5A7228F438EC002839FF /* MyVC.swift */; };
 		63C3B15628E0915400930DA1 /* consola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C3B15328E0909B00930DA1 /* consola.ttf */; };
 		BB0F552E239F8A790032A2A1 /* Icons.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB0F552D239F8A790032A2A1 /* Icons.plist */; };
 		BB13F7EA200ADCED003D1C4D /* libish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13F7DC200AD81D003D1C4D /* libish.a */; };
@@ -282,6 +284,9 @@
 		63AA5A6428F2FC8D002839FF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AA5A6828F2FDBD002839FF /* iSH-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSH-Bridging-Header.h"; sourceTree = "<group>"; };
 		63AA5A6928F2FEFB002839FF /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		63AA5A6D28F410AB002839FF /* MyUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyUtility.h; sourceTree = "<group>"; };
+		63AA5A6E28F410AB002839FF /* MyUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyUtility.m; sourceTree = "<group>"; };
+		63AA5A7228F438EC002839FF /* MyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVC.swift; sourceTree = "<group>"; };
 		63C3B15328E0909B00930DA1 /* consola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = consola.ttf; sourceTree = "<group>"; };
 		BB0B848E2586A4CF00208600 /* XcodeDefault.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = XcodeDefault.xcconfig; sourceTree = "<group>"; };
 		BB0B859B2586F13200208600 /* XcodeDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = XcodeDebug.xcconfig; sourceTree = "<group>"; };
@@ -560,9 +565,12 @@
 				63AA5A6828F2FDBD002839FF /* iSH-Bridging-Header.h */,
 				63AA5A6428F2FC8D002839FF /* AppDelegate.swift */,
 				63AA5A6928F2FEFB002839FF /* SceneDelegate.swift */,
+				63AA5A7228F438EC002839FF /* MyVC.swift */,
 				63C3B15328E0909B00930DA1 /* consola.ttf */,
 				BB792B561F96D90D00FFB7A4 /* TerminalViewController.h */,
 				BB792B571F96D90D00FFB7A4 /* TerminalViewController.m */,
+				63AA5A6D28F410AB002839FF /* MyUtility.h */,
+				63AA5A6E28F410AB002839FF /* MyUtility.m */,
 				BB78AB291FAD22440013E782 /* TerminalView.h */,
 				BB78AB2A1FAD22440013E782 /* TerminalView.m */,
 				BB0FC5901F980A6B00803272 /* Terminal.h */,
@@ -1107,8 +1115,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63AA5A6F28F410AB002839FF /* MyUtility.m in Sources */,
 				63AA5A6528F2FC8D002839FF /* AppDelegate.swift in Sources */,
 				BB28C7BB268975AE00BDC834 /* LocationDevice.m in Sources */,
+				63AA5A7328F438EC002839FF /* MyVC.swift in Sources */,
 				63AA5A6A28F2FEFB002839FF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
