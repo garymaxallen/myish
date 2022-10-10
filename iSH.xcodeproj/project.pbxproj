@@ -557,6 +557,7 @@
 		BB792B521F96D90D00FFB7A4 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				63AA5A6828F2FDBD002839FF /* iSH-Bridging-Header.h */,
 				63AA5A6428F2FC8D002839FF /* AppDelegate.swift */,
 				63AA5A6928F2FEFB002839FF /* SceneDelegate.swift */,
 				63C3B15328E0909B00930DA1 /* consola.ttf */,
@@ -577,7 +578,6 @@
 				BB792B611F96D90D00FFB7A4 /* Info.plist */,
 				BB0B848D2586A4B100208600 /* Configs */,
 				BB88F4A4215476BA00A341FD /* iSH.entitlements */,
-				63AA5A6828F2FDBD002839FF /* iSH-Bridging-Header.h */,
 			);
 			path = app;
 			sourceTree = "<group>";

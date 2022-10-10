@@ -33,31 +33,6 @@
 
 @end
 
-static void ios_handle_exit(struct task *task, int code) {
-    // we are interested in init and in children of init
-    // this is called with pids_lock as an implementation side effect, please do not cite as an example of good API design
-//    if (task->parent != NULL && task->parent->parent != NULL)
-//        return;
-//    // pid should be saved now since task would be freed
-//    pid_t pid = task->pid;
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:ProcessExitedNotification
-//                                                            object:nil
-//                                                          userInfo:@{@"pid": @(pid),
-//                                                                     @"code": @(code)}];
-//    });
-}
-
-// Put the abort message in the thread name so it gets included in the crash dump
-static void ios_handle_die(const char *msg) {
-    char name[17];
-    pthread_getname_np(pthread_self(), name, sizeof(name));
-    NSString *newName = [NSString stringWithFormat:@"%s died: %s", name, msg];
-    pthread_setname_np(newName.UTF8String);
-}
-
-//static NSString *const kSkipStartupMessage = @"Skip Startup Message";
-
 static NSURL *RootsDir2() {
     static NSURL *rootsDir;
     static dispatch_once_t token;
@@ -78,9 +53,6 @@ static NSURL *RootsDir2() {
     [super viewDidLoad];
     
     [self boot];
-    
-    
-    NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++   viewDidLoad");
     
     UIButton *escapeKey = [UIButton buttonWithType: UIButtonTypeSystem];
     [escapeKey setFrame: CGRectMake(0.0, 0.0, 40.0, 40.0)];
@@ -166,8 +138,6 @@ static NSURL *RootsDir2() {
 }
 
 - (int)startSession {
-//    NSArray<NSString *> *command = UserPreferences.shared.launchCommand;
-    
     NSArray<NSString *> *command = [NSArray<NSString *> new];
     NSMutableArray<NSString *> *command1 = [NSMutableArray<NSString *> new];
     command1[0] = @"/bin/login";
@@ -214,15 +184,10 @@ static NSURL *RootsDir2() {
     if (err < 0)
         return err;
 
-//    fs_register(&iosfs);
-//    fs_register(&iosfs_unsafe);
-
     // need to do this first so that we can have a valid current for the generic_mknod calls
     err = become_first_process();
     if (err < 0)
         return err;
-
-//    FsInitialize();
 
     // create some device nodes
     // this will do nothing if they already exist
@@ -249,13 +214,6 @@ static NSURL *RootsDir2() {
     // Permissions on / have been broken for a while, let's fix them
     generic_setattrat(AT_PWD, "/", (struct attr) {.type = attr_mode, .mode = 0755}, false);
     
-    // Register clipboard device driver and create device node for it
-//    err = dyn_dev_register(&clipboard_dev, DEV_CHAR, DYN_DEV_MAJOR, DEV_CLIPBOARD_MINOR);
-//    if (err != 0) {
-//        return err;
-//    }
-//    generic_mknodat(AT_PWD, "/dev/clipboard", S_IFCHR|0666, dev_make(DYN_DEV_MAJOR, DEV_CLIPBOARD_MINOR));
-    
     err = dyn_dev_register(&location_dev, DEV_CHAR, DYN_DEV_MAJOR, DEV_LOCATION_MINOR);
     if (err != 0)
         return err;
@@ -264,12 +222,8 @@ static NSURL *RootsDir2() {
     do_mount(&procfs, "proc", "/proc", "", 0);
     do_mount(&devptsfs, "devpts", "/dev/pts", "", 0);
 
-//    iosfs_init(); // let it mount any filesystems from user defaults
-
     [self configureDns];
     
-    exit_hook = ios_handle_exit;
-    die_handler = ios_handle_die;
 #if !TARGET_OS_SIMULATOR
     NSString *sockTmp = [NSTemporaryDirectory() stringByAppendingString:@"ishsock"];
     sock_tmp_prefix = strdup(sockTmp.UTF8String);
@@ -333,8 +287,6 @@ static NSURL *RootsDir2() {
         fd_close(fd);
     }
 }
-
-#pragma mark Bar
 
 - (void)hideKeyboard{
     [self.terminalView resignFirstResponder];
