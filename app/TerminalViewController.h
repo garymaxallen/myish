@@ -7,10 +7,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Terminal.h"
-
 @interface TerminalViewController : UIViewController
 
 @end
-
-extern Terminal *myutility_terminal;
