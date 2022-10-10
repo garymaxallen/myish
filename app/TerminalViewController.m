@@ -42,9 +42,7 @@
     [self setKeyboard];
     
     [MyUtility boot];
-    [TerminalViewController startSession];
-//    [MyUtility startSession];
-    self.terminalView.terminal = myutility_terminal;
+    [self startSession];
 }
 
 - (void)setKeyboard {
@@ -129,7 +127,7 @@
     [self.view addSubview: self.terminalView];
 }
 
-+ (int)startSession {
+- (int)startSession {
     NSArray<NSString *> *command = [NSArray<NSString *> new];
     NSMutableArray<NSString *> *command1 = [NSMutableArray<NSString *> new];
     command1[0] = @"/bin/login";
@@ -146,7 +144,7 @@
         NSAssert(IS_ERR(tty), @"tty should be error");
         return (int) PTR_ERR(tty);
     }
-    myutility_terminal = terminal;
+    self.terminalView.terminal = terminal;
     NSString *stdioFile = [NSString stringWithFormat:@"/dev/pts/%d", tty->num];
     err = create_stdio(stdioFile.fileSystemRepresentation, TTY_PSEUDO_SLAVE_MAJOR, tty->num);
     if (err < 0)

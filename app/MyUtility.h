@@ -7,8 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Terminal.h"
-
 NS_ASSUME_NONNULL_BEGIN
 
 
@@ -19,7 +17,5 @@ NS_ASSUME_NONNULL_BEGIN
 + (int)startSession;
 
 @end
-
-static Terminal *myutility_terminal;
 
 NS_ASSUME_NONNULL_END

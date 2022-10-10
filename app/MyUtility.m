@@ -163,42 +163,4 @@ static NSURL *RootsDir2() {
     NSLog(@"Class caller = %@", [array objectAtIndex:3]);
     NSLog(@"Function caller = %@", [array objectAtIndex:4]);
 }
-
-+ (int)startSession {
-    NSArray<NSString *> *command = [NSArray<NSString *> new];
-    NSMutableArray<NSString *> *command1 = [NSMutableArray<NSString *> new];
-    command1[0] = @"/bin/login";
-    command1[1] = @"-f";
-    command1[2] = @"root";
-    command = command1;
-    
-    int err = become_new_init_child();
-    if (err < 0)
-        return err;
-    struct tty *tty;
-    Terminal *terminal = [Terminal createPseudoTerminal:&tty];
-    if (terminal == nil) {
-        NSAssert(IS_ERR(tty), @"tty should be error");
-        return (int) PTR_ERR(tty);
-    }
-    myutility_terminal = terminal;
-    NSString *stdioFile = [NSString stringWithFormat:@"/dev/pts/%d", tty->num];
-    err = create_stdio(stdioFile.fileSystemRepresentation, TTY_PSEUDO_SLAVE_MAJOR, tty->num);
-    if (err < 0)
-        return err;
-    tty_release(tty);
-    
-    char argv[4096];
-    [Terminal convertCommand:command toArgs:argv limitSize:sizeof(argv)];
-    const char *envp = "TERM=xterm-256color\0";
-    
-    err = do_execve("/bin/login", 3, argv, envp);
-    if (err < 0)
-        return err;
-//    self.sessionPid = current->pid;
-    task_start(current);
-    
-    return 0;
-}
-
 @end
