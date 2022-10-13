@@ -147,7 +147,7 @@
     tty_release(tty);
     
 //    char argv[4096];
-    char argv[4090];
+    char argv[4096];
     argv[0] = '/';
     argv[1] = 'b';
     argv[2] = 'i';
@@ -159,7 +159,7 @@
     argv[8] = 'i';
     argv[9] = 'n';
     argv[10] = '\0';
-//    NSLog(@"argv: %s", argv);
+    NSLog(@"argv: %s", argv);
     
     err = do_execve("/bin/login", 3, argv, "TERM=xterm-256color\0");
     if (err < 0)
