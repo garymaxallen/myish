@@ -637,7 +637,8 @@ int __do_execve(const char *file, struct exec_args argv, struct exec_args envp) 
 }
 
 int do_execve(const char *file, size_t argc, const char *argv_p, const char *envp_p) {
-    printf("ccccccccccccccccccccccccccccccc");
+    printf("ccccccccccccccccccccccccccccccc\n");
+    printf("argv_p: %s\n", argv_p);
 //    char argvxx[11];
 //    argvxx[0] = '/';
 //    argvxx[1] = 'b';
