@@ -19,6 +19,7 @@ class MyVC: UIViewController {
         // Do any additional setup after loading the view.
         setKeyboard()
         MyUtility.boot()
+        _ = startSession()
     }
     
     func setKeyboard() {
@@ -143,5 +144,44 @@ class MyVC: UIViewController {
         if (str != nil) {
             terminalView.insertText(str!)
         }
+    }
+    
+    func startSession() -> Int{
+        var err = become_new_init_child()
+        if (err < 0){
+            return Int(err)
+        }
+        
+        let tty = UnsafeMutablePointer<UnsafeMutablePointer<tty>?>.allocate(capacity: 1)
+        tty.initialize(to: UnsafeMutablePointer<tty>.allocate(capacity: 1))
+        let terminal = Terminal.createPseudoTerminal(tty)
+        
+        if (terminal == nil) {
+            //            NSAssert(IS_ERR(tty), @"tty should be error");
+            //            return (int) PTR_ERR(tty);
+            return Int(err)
+        }
+        terminalView.terminal = terminal
+        
+        let stdioFile = "/dev/pts/\(String(describing: tty.pointee?.pointee.num))"
+        
+        err = create_stdio((stdioFile as NSString?)?.fileSystemRepresentation, TTY_PSEUDO_SLAVE_MAJOR, (tty.pointee?.pointee.num)!)
+        if (err < 0){
+            return Int(err)
+        }
+        tty_release(tty.pointee)
+        
+        var argv = [CChar](repeating: 1, count: 4096)
+        argv = "/bin/login".cString(using: String.Encoding.utf8)!
+        argv[10] = ("\0".cString(using: String.Encoding.utf8)?[0])!
+        print("argv:", argv)
+        
+        err = do_execve("/bin/login", 3, argv, "TERM=xterm-256color\0")
+        if (err < 0){
+            return Int(err)
+        }
+        task_start(current)
+        
+        return 0
     }
 }
