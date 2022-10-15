@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (int)boot;
 + (int)startSession;
++ (char *)getArgv;
 
 @end
 

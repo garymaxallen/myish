@@ -176,7 +176,7 @@ class MyVC: UIViewController {
         argv[10] = ("\0".cString(using: String.Encoding.utf8)?[0])!
         print("argv:", argv)
         
-        err = do_execve("/bin/login", 3, argv, "TERM=xterm-256color\0")
+        err = do_execve("/bin/login", 3, "/bin/login\0", "TERM=xterm-256color\0")
         if (err < 0){
             return Int(err)
         }

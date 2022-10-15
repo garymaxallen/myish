@@ -163,4 +163,21 @@ static NSURL *RootsDir2() {
     NSLog(@"Class caller = %@", [array objectAtIndex:3]);
     NSLog(@"Function caller = %@", [array objectAtIndex:4]);
 }
+
++ (char *)getArgv{
+    char argv[4096];
+    argv[0] = '/';
+    argv[1] = 'b';
+    argv[2] = 'i';
+    argv[3] = 'n';
+    argv[4] = '/';
+    argv[5] = 'l';
+    argv[6] = 'o';
+    argv[7] = 'g';
+    argv[8] = 'i';
+    argv[9] = 'n';
+    argv[10] = '\0';
+    char *arg = argv;
+    return arg;
+}
 @end

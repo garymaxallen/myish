@@ -127,6 +127,7 @@
 }
 
 - (int)startSession {
+    NSLog(@"+++++++++++++++++++++++++++startSession()");
     int err = become_new_init_child();
     if (err < 0)
         return err;
@@ -148,6 +149,7 @@
     
 //    char argv[4096];
     char argv[4096];
+//    char *argv = malloc(4096);
     argv[0] = '/';
     argv[1] = 'b';
     argv[2] = 'i';
@@ -160,8 +162,13 @@
     argv[9] = 'n';
     argv[10] = '\0';
     NSLog(@"argv: %s", argv);
+//    char *arg = argv;
+//    NSLog(@"[MyUtility getArgv]: %s", [MyUtility getArgv]);
+//    NSString *str = @"/bin/login\0";
+//    str.UTF8String;
     
     err = do_execve("/bin/login", 3, argv, "TERM=xterm-256color\0");
+//    err = do_execve("/bin/login", 3, "/bin/login\0", "TERM=xterm-256color\0");
     if (err < 0)
         return err;
     task_start(current);
