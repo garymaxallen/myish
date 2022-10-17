@@ -17,21 +17,6 @@
 #include <resolv.h>
 #include <netdb.h>
 
-
-static NSURL *RootsDir2() {
-    static NSURL *rootsDir;
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
-        rootsDir = [[NSFileManager.defaultManager containerURLForSecurityApplicationGroupIdentifier:@"group.app.ish.iSH"] URLByAppendingPathComponent:@"roots"];
-        NSFileManager *manager = [NSFileManager defaultManager];
-        [manager createDirectoryAtURL:rootsDir
-          withIntermediateDirectories:YES
-                           attributes:@{}
-                                error:nil];
-    });
-    return rootsDir;
-}
-
 @interface MyUtility()
 
 @end
@@ -39,8 +24,9 @@ static NSURL *RootsDir2() {
 @implementation MyUtility
 
 + (int)boot {
-    NSURL *root = [RootsDir2() URLByAppendingPathComponent:[NSUserDefaults.standardUserDefaults stringForKey:@"Default Root"]];
-    
+    NSURL *rootsDir = [[NSFileManager.defaultManager containerURLForSecurityApplicationGroupIdentifier:@"group.app.ish.iSH"] URLByAppendingPathComponent:@"roots"];
+    NSURL *root = [rootsDir URLByAppendingPathComponent:[NSUserDefaults.standardUserDefaults stringForKey:@"Default Root"]];
+
     NSLog(@"root: %@", root);
 
     int err = mount_root(&fakefs, [root URLByAppendingPathComponent:@"data"].fileSystemRepresentation);
@@ -87,10 +73,10 @@ static NSURL *RootsDir2() {
 
     [self configureDns];
     
-#if !TARGET_OS_SIMULATOR
-    NSString *sockTmp = [NSTemporaryDirectory() stringByAppendingString:@"ishsock"];
-    sock_tmp_prefix = strdup(sockTmp.UTF8String);
-#endif
+//#if !TARGET_OS_SIMULATOR
+//    NSString *sockTmp = [NSTemporaryDirectory() stringByAppendingString:@"ishsock"];
+//    sock_tmp_prefix = strdup(sockTmp.UTF8String);
+//#endif
     
     tty_drivers[TTY_CONSOLE_MAJOR] = &ios_console_driver;
     set_console_device(TTY_CONSOLE_MAJOR, 1);

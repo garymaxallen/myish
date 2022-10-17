@@ -15,7 +15,7 @@ class MyVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("com.mycom.mytest2.log: %@", "fdasfasfasfasfasdffasa")
+        //        NSLog("com.mycom.mytest2.log: %@", "fdasfasfasfasfasdffasa")
         // Do any additional setup after loading the view.
         setKeyboard()
         MyUtility.boot()
@@ -171,6 +171,17 @@ class MyVC: UIViewController {
         }
         task_start(current)
         
+        return 0
+    }
+    
+    func boot() -> Int {
+        let rootsDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.app.ish.iSH")?.appendingPathComponent("roots")
+        let root = rootsDir?.appendingPathComponent(UserDefaults.standard.string(forKey: "Default Root")!)
+        NSLog("root: %@", root?.description ?? "nil")
+//        var err = mount_root(&fakefs, (root!.appendingPathComponent("data") as NSURL).fileSystemRepresentation)
+//        if (err < 0){
+//            return err
+//        }
         return 0
     }
 }
