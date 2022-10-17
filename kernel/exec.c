@@ -637,21 +637,6 @@ int __do_execve(const char *file, struct exec_args argv, struct exec_args envp) 
 }
 
 int do_execve(const char *file, size_t argc, const char *argv_p, const char *envp_p) {
-    printf("ccccccccccccccccccccccccccccccc\n");
-    printf("argv_p: %s\n", argv_p);
-//    char argvxx[11];
-//    argvxx[0] = '/';
-//    argvxx[1] = 'b';
-//    argvxx[2] = 'i';
-//    argvxx[3] = 'n';
-//    argvxx[4] = '/';
-//    argvxx[5] = 'l';
-//    argvxx[6] = 'o';
-//    argvxx[7] = 'g';
-//    argvxx[8] = 'i';
-//    argvxx[9] = 'n';
-//    argvxx[10] = '\0';
-    
     struct exec_args argv = {.count = argc, .args = argv_p};
     struct exec_args envp = {.args = envp_p};
     while (*envp_p != '\0') {

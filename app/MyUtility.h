@@ -14,8 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MyUtility : NSObject
 
 + (int)boot;
-+ (int)startSession;
-+ (char *)getArgv;
 
 @end
 

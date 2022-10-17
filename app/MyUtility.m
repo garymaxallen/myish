@@ -98,18 +98,7 @@ static NSURL *RootsDir2() {
     if (err < 0)
         return err;
     
-    NSArray<NSString *> *command;
-    NSMutableArray<NSString *> *command1 = [NSMutableArray<NSString *> new];
-    command1[0] = @"/bin/login";
-    command1[1] = @"-f";
-    command1[2] = @"root";
-    command = command1;
-    
-    NSLog(@"%@", command);
-    char argv[4096];
-    [Terminal convertCommand:command toArgs:argv limitSize:sizeof(argv)];
-    const char *envp = "TERM=xterm-256color\0";
-    err = do_execve("/bin/login", 3, argv, envp);
+    err = do_execve("/bin/login", 3, "/bin/login\0-f\0root\0", "TERM=xterm-256color\0");
     if (err < 0)
         return err;
     task_start(current);
@@ -164,20 +153,4 @@ static NSURL *RootsDir2() {
     NSLog(@"Function caller = %@", [array objectAtIndex:4]);
 }
 
-+ (char *)getArgv{
-    char argv[4096];
-    argv[0] = '/';
-    argv[1] = 'b';
-    argv[2] = 'i';
-    argv[3] = 'n';
-    argv[4] = '/';
-    argv[5] = 'l';
-    argv[6] = 'o';
-    argv[7] = 'g';
-    argv[8] = 'i';
-    argv[9] = 'n';
-    argv[10] = '\0';
-    char *arg = argv;
-    return arg;
-}
 @end

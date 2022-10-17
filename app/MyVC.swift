@@ -154,14 +154,8 @@ class MyVC: UIViewController {
         
         let tty = UnsafeMutablePointer<UnsafeMutablePointer<tty>?>.allocate(capacity: 1)
         tty.initialize(to: UnsafeMutablePointer<tty>.allocate(capacity: 1))
-        let terminal = Terminal.createPseudoTerminal(tty)
         
-        if (terminal == nil) {
-            //            NSAssert(IS_ERR(tty), @"tty should be error");
-            //            return (int) PTR_ERR(tty);
-            return Int(err)
-        }
-        terminalView.terminal = terminal
+        terminalView.terminal = Terminal.createPseudoTerminal(tty)
         
         let stdioFile = "/dev/pts/\(String(describing: tty.pointee?.pointee.num))"
         
@@ -171,12 +165,7 @@ class MyVC: UIViewController {
         }
         tty_release(tty.pointee)
         
-        var argv = [CChar](repeating: 1, count: 4096)
-        argv = "/bin/login".cString(using: String.Encoding.utf8)!
-        argv[10] = ("\0".cString(using: String.Encoding.utf8)?[0])!
-        print("argv:", argv)
-        
-        err = do_execve("/bin/login", 3, "/bin/login\0", "TERM=xterm-256color\0")
+        err = do_execve("/bin/login", 3, "/bin/login\0-f\0root\0", "TERM=xterm-256color\0")
         if (err < 0){
             return Int(err)
         }

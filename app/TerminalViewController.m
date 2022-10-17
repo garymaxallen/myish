@@ -162,13 +162,17 @@
     argv[9] = 'n';
     argv[10] = '\0';
     NSLog(@"argv: %s", argv);
+    
+//    for (int i =0; i< 4096; i++) {
+//        NSLog(@"argv[i]: %c", argv[i]);
+//    }
 //    char *arg = argv;
 //    NSLog(@"[MyUtility getArgv]: %s", [MyUtility getArgv]);
 //    NSString *str = @"/bin/login\0";
 //    str.UTF8String;
     
-    err = do_execve("/bin/login", 3, argv, "TERM=xterm-256color\0");
-//    err = do_execve("/bin/login", 3, "/bin/login\0", "TERM=xterm-256color\0");
+//    err = do_execve("/bin/login", 3, argv, "TERM=xterm-256color\0");
+    err = do_execve("/bin/login", 3, "/bin/login\0-f\0root\0", "TERM=xterm-256color\0");
     if (err < 0)
         return err;
     task_start(current);
