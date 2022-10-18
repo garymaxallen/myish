@@ -26,6 +26,7 @@
 		63AA5A6F28F410AB002839FF /* MyUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AA5A6E28F410AB002839FF /* MyUtility.m */; };
 		63AA5A7328F438EC002839FF /* MyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA5A7228F438EC002839FF /* MyVC.swift */; };
 		63C3B15628E0915400930DA1 /* consola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C3B15328E0909B00930DA1 /* consola.ttf */; };
+		63E333D628FE7DD3004CD725 /* Roots.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E333D428FE7DD3004CD725 /* Roots.m */; };
 		BB0F552E239F8A790032A2A1 /* Icons.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB0F552D239F8A790032A2A1 /* Icons.plist */; };
 		BB13F7EA200ADCED003D1C4D /* libish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB13F7DC200AD81D003D1C4D /* libish.a */; };
 		BB21A18426890C7E00BD19B4 /* libfakefs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB21A16F2689041500BD19B4 /* libfakefs.a */; };
@@ -288,6 +289,8 @@
 		63AA5A6E28F410AB002839FF /* MyUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyUtility.m; sourceTree = "<group>"; };
 		63AA5A7228F438EC002839FF /* MyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVC.swift; sourceTree = "<group>"; };
 		63C3B15328E0909B00930DA1 /* consola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = consola.ttf; sourceTree = "<group>"; };
+		63E333D428FE7DD3004CD725 /* Roots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Roots.m; sourceTree = "<group>"; };
+		63E333D528FE7DD3004CD725 /* Roots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Roots.h; sourceTree = "<group>"; };
 		BB0B848E2586A4CF00208600 /* XcodeDefault.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = XcodeDefault.xcconfig; sourceTree = "<group>"; };
 		BB0B859B2586F13200208600 /* XcodeDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = XcodeDebug.xcconfig; sourceTree = "<group>"; };
 		BB0B859C2586F19000208600 /* XcodeRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = XcodeRelease.xcconfig; sourceTree = "<group>"; };
@@ -575,6 +578,8 @@
 				BB78AB2A1FAD22440013E782 /* TerminalView.m */,
 				BB0FC5901F980A6B00803272 /* Terminal.h */,
 				BB0FC5911F980A6B00803272 /* Terminal.m */,
+				63E333D528FE7DD3004CD725 /* Roots.h */,
+				63E333D428FE7DD3004CD725 /* Roots.m */,
 				BB23F58B231E1D1400585522 /* ScrollbarView.h */,
 				BB23F58C231E1D1400585522 /* ScrollbarView.m */,
 				BB235535235D489400139E00 /* LocationDevice.h */,
@@ -1118,6 +1123,7 @@
 				63AA5A6F28F410AB002839FF /* MyUtility.m in Sources */,
 				63AA5A6528F2FC8D002839FF /* AppDelegate.swift in Sources */,
 				BB28C7BB268975AE00BDC834 /* LocationDevice.m in Sources */,
+				63E333D628FE7DD3004CD725 /* Roots.m in Sources */,
 				63AA5A7328F438EC002839FF /* MyVC.swift in Sources */,
 				63AA5A6A28F2FEFB002839FF /* SceneDelegate.swift in Sources */,
 			);

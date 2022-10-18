@@ -17,6 +17,8 @@
 #include <resolv.h>
 #include <netdb.h>
 
+#import "Roots.h"
+
 @interface MyUtility()
 
 @end
@@ -24,9 +26,10 @@
 @implementation MyUtility
 
 + (int)boot {
-    NSURL *rootsDir = [[NSFileManager.defaultManager containerURLForSecurityApplicationGroupIdentifier:@"group.app.ish.iSH"] URLByAppendingPathComponent:@"roots"];
-    NSURL *root = [rootsDir URLByAppendingPathComponent:[NSUserDefaults.standardUserDefaults stringForKey:@"Default Root"]];
+//    NSURL *rootsDir = [[NSFileManager.defaultManager containerURLForSecurityApplicationGroupIdentifier:@"group.app.ish.iSH"] URLByAppendingPathComponent:@"roots"];
+//    NSURL *root = [rootsDir URLByAppendingPathComponent:[NSUserDefaults.standardUserDefaults stringForKey:@"Default Root"]];
 
+    NSURL *root = [Roots.instance rootUrl:Roots.instance.defaultRoot];
     NSLog(@"root: %@", root);
 
     int err = mount_root(&fakefs, [root URLByAppendingPathComponent:@"data"].fileSystemRepresentation);
